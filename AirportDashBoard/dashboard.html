@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Airpot Dashboard</title>
+
+    <!-- Common CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="css/commonDashboard.css" rel="stylesheet">
+
+    
+    <style type="text/css">
+        /* CSS for specific for Dashboard layout */
+        .navbar-brand {
+            color: #9d9d9d;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        /* Service Rate panel content CSS */
+        .img15-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+
+            text-align:center; /* Align center inline elements */
+            font: 0/0 a;
+        }
+
+        .img15-container:before {
+            content: ' ';
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+
+        .img15-container img {
+            vertical-align: middle;
+            display: inline-block;
+        }
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top" style="background-color:none;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">PLACEHOLDER</a>        
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color:#fff;">
+                <div class="headerIconsDiv" style="float:right; margin:10px">
+                    <ul>
+                        <li><a href="#"><span><img src="img/icons/arrow.png"></span></a></li>
+                        <li><a href="#"><span><img src="img/icons/print.png"></span></a></li>
+                        <li><a href="#"><span><img src="img/icons/book.png"></span></a></li>
+                        <li><a href="#"><span><img src="img/icons/info.png"></span></a></li>
+                        <li><a href="#"><span><img src="img/icons/resize.png"></span></a></li>
+                    </ul>
+                </div>
+                <!-- <ul class="nav navbar-nav">
+                    <li class="active" >
+                        <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2">
+                        <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                        </button>
+                    </li>
+                </ul> -->
+                </div><!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper" class="bgDashboardImgWrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sideMenu"  style="color:#fff;">
+                <li style="height:60px;"></li>
+                <li>Sat 20/06/2015</li>
+                <li><h4>18:20  (UTC)</h4></li>
+                <li>32&nbsp;&nbsp;<span><img src="img/icons/ico-weather.png"></span></li>
+                <li style="height:20px;"></li>
+
+                <li>18/06&nbsp;&nbsp;&nbsp;SUMMARY</li>
+                
+                <li style="height:20px;"></li>
+                <li>70%&nbsp;&nbsp;&nbsp;&nbsp;SA (70% target)</li>
+                <li>90%&nbsp;&nbsp;&nbsp;&nbsp;SA (70% target)</li>
+                <li>30%&nbsp;&nbsp;&nbsp;&nbsp;SA (70% target)</li>
+                <li style="height:20px;"></li>
+                <li>800&nbsp;&nbsp;&nbsp;&nbsp;Handled Traffic</li>
+                <li>400&nbsp;&nbsp;&nbsp;&nbsp;Arrivals</li>
+                <li>400&nbsp;&nbsp;&nbsp;&nbsp;Departures</li>
+                <li>800&nbsp;&nbsp;&nbsp;&nbsp;Declared Capacity</li>
+                <li>770&nbsp;&nbsp;&nbsp;&nbsp;Actual Capacity</li>
+                <li>790&nbsp;&nbsp;&nbsp;&nbsp;Scheduled Demand</li>
+                <li style="height:20px;"></li>
+                <li>60Kts&nbsp;&nbsp;&nbsp;&nbsp;N/E Wind</li>
+                <li>3hrs&nbsp;&nbsp;&nbsp;&nbsp;Maintenance</li>
+                <li style="height:50px;"></li>
+
+                <li class="sideIcons"><span><img src="img/icons/calendar.png"></span>&nbsp;&nbsp;Calender</li>
+                <li class="sideIcons"><span><img src="img/icons/setting.png"></span>&nbsp;&nbsp;Settings</li>
+                <li class="sideIcons">
+                <input type="text" name="search" size="15" style="padding:0px 5px;border-radius:8px;color:#000">
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper" >
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" style="height:45px;">
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0;">
+                            <div class="panel-heading" style="height:45px">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Airport Delay</div>
+                                <div class="selectParent" style="float:right">
+                                    <select class="">
+                                        <option>Hourly</option>
+                                        <option>Daily</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div><!-- heading -->
+                            <div class="panel-body panel-transparent" style="padding:0px 15px;opacity:0.7">
+                                <!-- <div id="morris-donut-chart"></div> -->
+                                <div id="lollyPopChartContainer" onclick="location.href='airportDelayKPI.html'" style="height:250px"></div>
+                                <div class="panel-footer panel-transparent" style="height:45px">
+                                    <div class="text-left" style="float:left;padding:4px">
+                                         <span style="padding:0px 9px"><img src="img/arrowleft.png" width="" height=""></span>
+                                         <span style="padding:0px 9px"><img src="img/arrowryt.png" width="" height=""></span>
+                                     </div>
+                                    <div class="selectParent" style="float:right">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-4 col-md-4">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading" style="height:45px">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Slot Adherence (SA)</div>
+                                <div class="selectParent" style="float:right">
+                                    <select class="">
+                                        <option>Hourly</option>
+                                        <option>Daily</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body panel-transparent">
+                                 <div id="" class="center" style="height:250px;color:#fff">
+                                    <table border="0">
+                                    <tr><td></td><td>
+                                    <span class="chart" style="" data-percent="76">
+                                    <span class="percent" style=""></span>
+                                    </span></td><td></td></tr>
+
+                                    <tr style="text-align:center"><td>EK</td><td></td><td style="text-align:center">TOW</td><tr>
+                                    <tr><td>
+                                    <span class="chartSmall" data-percent="50">
+                                    <span class="percentSmall"></span>
+                                    </span></td>
+                                    <td></td>
+                                    <td>
+                                    <span class="chartSmall" data-percent="28">
+                                    <span class="percentSmall"></span>
+                                    </span></td></tr>
+                                    </table>
+                                </div>
+                                  <div class="panel-footer panel-transparent" style="height:45px">
+                                    <div class="text-left" style="float:left;padding:4px">
+                                        <span style="padding:0px 9px"><img src="img/arrowleft.png" width="" height=""></span>
+                                         <span style="padding:0px 9px"><img src="img/arrowryt.png" width="" height=""></span>
+                                     </div>
+                                    <div class="selectParent" style="float:right">
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- row -->
+
+
+                <div class="row">
+                   
+                    <div class="col-lg-4">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading" style="height:45px">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Slot Utilisation</div>
+                                <div class="selectParent" style="float:right">
+                                    <select>
+                                        <option>Daily</option>
+                                        <option>Hourly</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div><!-- heading -->
+                            <div class="panel-body">
+                                <!-- <div id="morris-line-chart"></div> -->
+                                <div id="Bar2Container" style="height:250px"></div>
+                               <div class="panel-footer panel-transparent" style="height:45px">
+                                    <div class="text-left" style="float:left;padding:4px">
+                                         <span style="padding:0px 9px"><img src="img/arrowleft.png" width="" height=""></span>
+                                         <span style="padding:0px 9px"><img src="img/arrowryt.png" width="" height=""></span>
+                                     </div>
+                                    <div class="selectParent" style="float:right">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading" style="height:45px">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Pier Service Level</div>
+                                <div class="selectParent" style="float:right">
+                                    <select>
+                                        <option>Daily</option>
+                                        <option>Hourly</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <!-- <div id="morris-bar-chart"></div> -->
+                                <div style="height:250px;color:#fff" class="center">
+                                    <div style="padding:4px">Movements: 137&nbsp;&nbsp;<img src="img/slotBubble_1.png" style="width:260px;padding:20px">
+                                    </div>
+                                    <div style="padding:4px">Movements: 123&nbsp;&nbsp;<img src="img/slotBubble_2.png" style="width:260px;padding:20px">
+                                    </div>
+                                    <div style="padding:4px">Movements: 498&nbsp;&nbsp;<img src="img/slotBubble_3.png" style="width:260px;padding:20px">
+                                    </div>
+                                </div>
+                                  <div class="panel-footer panel-transparent" style="height:45px">
+                                    <div class="text-left" style="float:left;padding:4px">
+                                         <span style="padding:0px 9px"><img src="img/arrowleft.png" width="" height=""></span>
+                                         <span style="padding:0px 9px"><img src="img/arrowryt.png" width="" height=""></span>
+                                     </div>
+                                    <div class="selectParent" style="float:right">
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3"> 
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading" style="height:45px">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Service Rate</div>
+                                <div class="selectParent" style="float:right">
+                                    <select>
+                                        <option>Monthly</option>
+                                        <option>Hourly</option>
+                                        <option>Daily</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body panel-transparent">
+                                <!-- <div id="morris-line-chart"></div> -->
+                                 <div id="" style="height:250px;position: relative;width: auto;border: 0px solid black;">
+                                 <div style="padding-top: auto;"></div>
+                                 <div class="img15-container">
+                                     <img src="img/15-roboto.png" width="120px" height="100px">
+                                 </div>
+                                 </div>
+                                   <div class="panel-footer panel-transparent" style="height:45px">
+                                    <div class="text-left" style="float:left;padding:4px">
+                                         <span style="padding:0px 9px"><img src="img/arrowleft.png" width="" height=""></span>
+                                         <span style="padding:0px 9px"><img src="img/arrowryt.png" width="" height=""></span>
+                                     </div>
+                                    <div class="selectParent" style="float:right">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        <div  class="footer" style="">
+            <div id="footerDiv">
+                    <ul>
+                        <li><a href="#"><span style="color:#17DEFF">FRI 19/06/2015</span></a></li>
+                        <li><a href="#"><span>OTP=75% (target 70%)</span></a></li>
+                        <li><a href="#"><span>Closed stands=31</span></a></li>
+                        <li><a href="#"><span>Single RW</span></a></li>
+                        <li><a href="#"><span style="color:#FF0000;font-weight:bold">Honeywell</span></a></li>
+                    </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sidebar_menu.js"></script>
+    <script src="js/BarChart.js"></script>
+    
+    <!-- Fusion Charts -->
+    <script src="js/fusion/fusioncharts.charts.js"></script>
+    <script src="js/fusion/fusioncharts.gantt.js"></script>
+    <script src="js/fusion/fusioncharts.js"></script>
+    <script src="js/fusion/fusioncharts.powercharts.js"></script>
+    <script src="js/fusion/fusioncharts.widgets.js"></script>
+    <script src="js/fusion/fusioncharts.theme.fint.js"></script>
+    <script src="js/fusion/dashboardLollypopChart.js"></script>
+
+    <!-- Pie Charts -->
+    <script type="text/javascript" src="js/pieChart/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/pieChart/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/pieChart/jquery.easypiechart.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+        $('.chart').easyPieChart({
+            easing: 'easeOutBounce',
+            onStep: function(from, to, percent) {
+                $(this.el).find('.percent').text(Math.round(percent));
+            },
+            size: 100,
+            // animate: 2000,
+            lineCap: 'butt',
+            scaleColor: false,
+            barColor: '#17DEFF',
+            trackColor: "rgba(234, 233, 232, 0.4)",
+            lineWidth: 2
+        });
+        // var chart = window.chart = $('.chart').data('easyPieChart');
+        // $('.js_update').on('click', function() {
+        //  chart.update(Math.random()*200-100);
+        // });
+    });
+
+
+        $(function() {
+        $('.chartSmall').easyPieChart({
+            easing: 'easeOutBounce',
+            onStep: function(from, to, percent) {
+                $(this.el).find('.percentSmall').text(Math.round(percent));
+            },
+            size: 80,
+            // animate: 2000,
+            lineCap: 'butt',
+            scaleColor: false,
+            barColor: '#17DEFF',
+            trackColor: "rgba(255, 255, 255, 0.7)",
+            lineWidth: 2
+        });
+        // var chart = window.chart = $('.chart').data('easyPieChart');
+        // $('.js_update').on('click', function() {
+        //  chart.update(Math.random()*200-100);
+        // });
+    });
+    </script>
+
+    <script src="js/highCharts/highcharts.js"></script>
+    <script src="js/highCharts/exporting.js"></script>
+</body>
+
+</html>

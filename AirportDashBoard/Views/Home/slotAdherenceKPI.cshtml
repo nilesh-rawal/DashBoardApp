@@ -1,0 +1,959 @@
+﻿<head>
+
+    <title>Airpot Dashboard</title>
+
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/normalize.css" rel="stylesheet">
+    <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    @*<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>*@
+    <link href="~/css/commonDashboard.css" rel="stylesheet">
+
+    <!-- Chart KPI CSS -->
+    <link href="~/css/chartKPI.css" rel="stylesheet">
+    @*<link href="~/css/select/jquery.selectbox.css" rel="stylesheet">*@
+
+    <!-- BootStrap & jQuery -->
+
+    <script type="text/javascript" src="~/js/select/jquery-1.7.2.min.js"></script>
+    @*<script type="text/javascript" src="~/js/select/jquery.selectbox-0.2.js"></script>*@
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!-- Fusion Charts -->
+    <script src="~/js/fusion/fusioncharts.charts.js"></script>
+    <script src="~/js/fusion/fusioncharts.gantt.js"></script>
+    <script src="~/js/fusion/fusioncharts.js"></script>
+    <script src="~/js/fusion/fusioncharts.powercharts.js"></script>
+    <script src="~/js/fusion/fusioncharts.widgets.js"></script>
+    <script src="~/js/fusion/fusioncharts.theme.fint.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+    @*<script src="~/js/fusion/lollypopReverse.js"></script>*@
+    <!-- SELECT js -->
+
+    <style type="text/css">
+            .panel-transparent .panel-body {
+                background: rgba(115, 136, 142, 0.7) !important;
+            }
+
+            #legendsList ul {
+                list-style-type: none;
+            }
+
+            #legendsList ul {
+                margin: 0;
+                padding: 0;
+                list-style-type: none;
+            }
+
+
+                #legendsList ul li {
+                    display: inline;
+                    text-decoration: none;
+                    margin: 0px 10px;
+                    padding: 0px 15px;
+                    color: #fff;
+                    cursor: default;
+                }
+
+            .legendsColor {
+                background-color: #FF0000;
+                height: 10px;
+                width: 10px;
+                display: inline-block;
+            }
+
+            /* .modal-content{
+            width: 800px;
+            height: auto;
+        }*/
+
+            .modal-header {
+                border-radius: 0px;
+                background-color: #000;
+                color: #fff;
+                height: 50px;
+            }
+
+            .modalIconsDiv {
+                /*display:none;*/
+                /*height: 150px;*/
+            }
+
+                .modalIconsDiv ul li {
+                    display: inline;
+                }
+
+                .modalIconsDiv ul li {
+                    float: left;
+                    height: 70px;
+                    padding: 0px 15px;
+                    /*border:1px solid; */
+                    /*margin:10px*/
+                    color: #fff;
+                    text-align: center;
+                    text-decoration: none;
+                }
+
+            .myDiv {
+                /*height: 45px;*/
+                /*padding: 2px 0px;*/
+            }
+
+                .myDiv ul li {
+                    display: inline;
+                    /*border:1px solid;*/
+                }
+
+                    .myDiv ul li a {
+                        float: left;
+                        border: 1px solid;
+                        padding: 12px 12px;
+                        height: 44px;
+                        width: 61px;
+                        color: #fff;
+                        margin: 0x 2px;
+                        text-align: center;
+                        text-decoration: none;
+                        background-color: #b9f79e;
+                        font-weight: 300;
+                    }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top" style="background-color: none;position:absolute">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header fixed-brand" style="background-color: none;">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="color:#fff;font-size:13px">Placeholder</a>
+        </div>
+        <!-- navbar-header-->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color: #fff;">
+            <div class="headerIconsDiv" style="float: right; margin: 10px">
+                <ul>
+                    <li style="width:840px;float:left">Sat 20/06/2015 - 18:02 (UTC)</li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/arrow.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/print.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/book.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/info.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/resize.png">
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper" class="bgImgWrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" style="margin-top:65px">
+
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <li style="height: 350px">
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a onclick="onclickHome()" style="cursor:pointer">
+                        <span>
+                            <img src="~/img/icons/home.png">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>
+                            <img src="~/img/icons/calendar.png">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>
+                            <img src="~/img/icons/setting.png">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>
+                            <img src="~/img/icons/search.png">
+                        </span>
+                    </a>
+                </li>
+                <li style="margin-top:210px">
+                    <a href="#">
+                        <span>
+                            <img src="~/img/icons/7.png" />
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <div style="height: 20px"></div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" style="height: 45px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="panel panel-default panel-transparent" style="border-radius: 0;">
+                            <div class="panel-heading" style="font-family: 'Roboto'; font-weight: 100;">
+                                <!-- <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Airport Delay</div> -->
+                                <div id="panelDiv" class="panel-title" style="">
+                                    <ul>
+                                        <li>
+                                            <a onclick="OpenAirportDelayKPI()" style="cursor:pointer">
+                                                Airport<br>
+                                                Delay
+                                            </a>
+                                        </li>
+                                        <li><a onclick="OpenslotAdherenceKPI()" class="panelActive" style="cursor:pointer">Slot Adherence</a></li>
+                                        <li><a href="#">Slot Utilisation</a></li>
+                                        <li><a href="#">Pier Service Level</a></li>
+                                        <li>
+                                            <a href="#">
+                                                Service<br>
+                                                Rate
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div id="filterDiv" class="panel-title" style="">
+                                    <ul class="filterUl">
+                                        <li class="filterLi" style="line-height: 30px;">
+                                            <a data-toggle="modal" data-target="#myBoxChartModal" style="text-decoration: none; color: #fff; cursor: pointer">Monthly Summary</a>
+                                        </li>
+
+                                        <li class="filterLi" style="line-height: 30px;">
+                                            <a data-toggle="modal" data-target="#myBubbleChartModal" style="text-decoration: none; color: #fff; cursor: pointer">SA by Airlines</a>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDuration" id="LolipopFrequency">
+                                                <select class="">
+                                                    <option>Hourly</option>
+                                                    <option selected="1">Daily</option>
+                                                    <option>Monthly</option>
+                                                    <option>Yearly</option>
+                                                </select>
+                                            </div>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDirection">
+                                                <select class="">
+                                                    <option>June 2015</option>
+                                                    <option>May 2015</option>
+                                                    <option>July 2015</option>
+                                                </select>
+                                            </div>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDirection" id="idDirection">
+                                                <select class="">
+                                                   <option value="All">All Directions</option>
+                                                    <option value="inbound">Arrival</option>
+                                                    <option value="outbound">Departure</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- heading -->
+                            <div class="panel-body" style="background-color:#73888E">
+                                <!-- <div id="morris-donut-chart"></div> -->
+                                <div style="height:126px;display:none" class="displayDiv"></div>
+                                <div id="chartContainer" class="" style="height: 100%; padding:0;margin:0"></div>
+
+                                <div id="" class="chartMerge" style="padding: 0px 0px; margin-top:-34px;margin-right:35px; float: right">
+                                    <img src="/img/icons/ico-expand-icon.png">
+                                </div>
+
+                                <div id="chartContainer2" class="description" style="height: 100%;  padding:0;margin-left:30px; margin-top:-25px"></div>
+
+                                <div style="height:106px;display:none" class="displayDiv"></div>
+                                <div style="height: 68px;"></div>
+                                <div class="panel-footer panel-transparent">
+                                    <div class="" style="float: left">
+                                        <span style="padding: 0px 9px">
+                                            <img src="~/img/arrowleft.png" width="" height="">
+                                        </span>
+                                        <span style="padding: 0px 9px">
+                                            <img src="~/img/arrowryt.png" width="" height="">
+                                        </span>
+                                    </div>
+                                    <div style="float:right">
+                                        <span style="padding:0"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 10px"></span>
+                                        <span style="padding:0"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                        <span style="padding:0"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                    </div>
+                                    <div id="legendsList" style="text-align:center">
+                                        <ul>
+                                            <li><span class="legendsColor" style="background-color: #AFAFAF;"></span>&nbsp;&nbsp;Towing</li>
+                                            <li><span class="legendsColor" style="background-color: #CFFFBD;"></span>&nbsp;&nbsp;EK</li>
+                                            <li><span class="legendsColor" style="background-color: #FFAC61;"></span>&nbsp;&nbsp;FZ</li>
+                                            <li><span class="legendsColor" style="background-color: #FFFFFF;"></span>&nbsp;&nbsp;OAL</li>
+                                            <li><span><img src="~/img/icons/SlotLegend.png" style="display:inline-block;margin-top:-2px"></span>&nbsp;&nbsp;Slot Adherence</li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                                <!-- arrow & Select box -->
+                                @*<div style="height: 30px"></div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row -->
+                <!--  <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
+                Click me
+                </button> -->
+            </div>
+            <!-- /#page-content-wrapper -->
+
+            
+            <div class="footer" style="font-family: 'Roboto'; font-weight: 100;">
+                <span style="float: right; padding: 0px 4px;color:#FF0000;font-weight:bold">Honeywell</span>
+                <div id="footerDiv" style="width: 93%; font-family: 'Roboto'; font-weight: 100;margin-top:-9px">
+                    <marquee>
+                        <ul>
+                            <li><a href="#"><span style="color: #17DEFF">FRI 19/06/2015</span></a></li>
+                            <li><a href="#"><span>SA = 75% (target 70%)</span></a></li>
+                            <li><a href="#"><span>Slot Utilisation = 75%</span></a></li>
+                            <li><a href="#"><span>Pier Service Level = EK 100/137 Contacts&nbsp;;&nbsp;FZ 59/123 Contacts&nbsp;;&nbsp;OAL 116/498 Contacts</span></a></li>
+                            <li><a href="#"><span>Service Rate = 120</span></a></li>
+                            <!--<li><a href="#"><span style="color:#FF0000;font-weight:bold">Honeywell</span></a></li>-->
+                        </ul>
+                    </marquee>
+                </div>
+            </div>
+
+
+
+            <!-- Box Chart begins here -->
+            <!-- Box Chart begins here -->
+            <!-- Modal -->
+            <div class="modal fade" id="myBoxChartModal" role="dialog">
+                <div class="modal-dialog mSummary modal-lg">
+
+                    <!-- Modal content-->
+                    <div class="modal-content" style="height:480px;width:1270px">
+                        <div class="modal-header">
+                            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+                            <!-- <h4 class="modal-title">Modal Header</h4> -->
+                            <div style="float:left;">
+                                <span data-dismiss="modal"><a style="cursor: pointer;"><img src="~/img/icons/ico-close.png"></a></span>
+                                <span style="padding:1px 9px">&nbsp;Slot Adherence by Monthly Summary </span>
+                            </div>
+
+                            <div class="modalIconsDiv" style="float:right;">
+                                <ul>
+                                    <li>
+                                        <div class="selectDuration" style="float:left;">
+                                            <select class="">
+                                                <option>May 2015</option>
+                                                <option>Apr 2015</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="selectDirection" style="float:left;">
+                                            <select class="">
+                                                <option>All Directions</option>
+                                                <option>Arrival</option>
+                                                <option>Departure</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li><span><img src="~/img/icons/arrow.png"></span></li>
+                                    <li><span><img src="~/img/icons/print.png"></span></li>
+                                    <li><span><img src="~/img/icons/book.png"></span></li>
+                                    <li><span><img src="~/img/icons/setting.png"></span></li>
+                                </ul>
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-body">
+                            <div style="height:20px"></div>
+                            <div class="wrapper" style="width:1250px">
+                                <div class="myDiv">
+                                    <ul style="padding:0px 0px">
+                                        <li><a style="background-color:#fff;color:#000;border:0px">Sun</a></li>
+                                        <li><a style="background-color:#FF3F18;">18%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a> </a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">54%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a style="background-color:#ff9d00;">25%</a></li>
+                                        <li><a style="background-color:#ff9d00;">40%</a></li>
+                                        <li><a style="background-color:#FF3F18;">20%</a></li>
+                                        <li><a style="background-color:#FF3F18;">20%</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="myDiv">
+                                    <ul style="padding:0px 0px">
+                                        <li><a style="background-color:#fff;color:#000;border:0px">Mon</a></li>
+                                        <li><a style="background-color:#FF3F18;">19%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a> </a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">50%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a style="background-color:#ff9d00;">28%</a></li>
+                                        <li><a style="background-color:#FF3F18;">19%</a></li>
+                                        <li><a style="background-color:#FF3F18;">16%</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="myDiv">
+                                    <ul style="padding:0px 0px">
+                                        <li><a style="background-color:#fff;color:#000;border:0px">Tue</a></li>
+                                        <li><a style="background-color:#FF3F18;">16%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a> </a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">53%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a style="background-color:#ff9d00;">31%</a></li>
+                                        <li><a style="background-color:#FF3F18;">13%</a></li>
+                                        <li><a style="background-color:#FF3F18;">7%</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="myDiv">
+                                    <ul style="padding:0px 0px">
+                                        <li><a style="background-color:#fff;color:#000;border:0px">Wed</a></li>
+                                        <li><a style="background-color:#FF3F18;">16%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a> </a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a style="background-color:#ff9d00;">38%</a></li>
+                                        <li><a style="background-color:#ff9d00;">40%</a></li>
+                                        <li><a style="background-color:#FF3F18;">18%</a></li>
+                                        <li><a style="background-color:#FF3F18;">14%</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="myDiv">
+                                    <ul style="padding:0px 0px">
+                                        <li><a style="background-color:#fff;color:#000;border:0px">Thu</a></li>
+                                        <li><a style="background-color:#FF3F18;">15%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a> </a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a style="background-color:#ff9d00;">39%</a></li>
+                                        <li><a style="background-color:#FF3F18;">10%</a></li>
+                                        <li><a style="background-color:#FF3F18;">19%</a></li>
+                                        <li><a style="background-color:#FF3F18;">20%</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="myDiv">
+                                    <ul style="padding:0px 0px">
+                                        <li><a style="background-color:#fff;color:#000;border:0px">Fri</a></li>
+                                        <li><a style="background-color:#FF3F18;">20%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a> </a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">58%</a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a style="background-color:#ff9d00;">40%</a></li>
+                                        <li><a style="background-color:#ff9d00;">37%</a></li>
+                                        <li><a style="background-color:#FF3F18;">15%</a></li>
+                                        <li><a style="background-color:#FF3F18;">18%</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="myDiv">
+                                    <ul style="padding:0px 0px">
+                                        <li><a style="background-color:#fff;color:#000;border:0px">Sat</a></li>
+                                        <li><a style="background-color:#FF3F18;">20%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#ff9d00;">40%</a></li>
+                                        <li><a></a></li>
+                                        <li><a></a></li>
+                                        <li><a style="background-color:#FFDC00;color:#000;border-color:#fff">60%</a></li>
+                                        <li><a style="background-color:#FF3F18;">10%</a></li>
+                                        <li><a style="background-color:#FF3F18;">18%</a></li>
+                                        <li><a style="background-color:#FF3F18;">20%</a></li>
+                                        <li><a style="background-color:#FF3F18;">20%</a></li>
+                                        <li><a style="background-color:#FF3F18;">20%</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="myDiv" style="">
+                                    <ul style="padding:0px 0px">
+                                        <li><a style="background-color:#fff;color:#000;border:0px"></a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">00-06</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">06-07</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">07-08</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">08-09</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">09-10</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">10-11</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">11-12</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">12-13</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">13-14</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">14-15</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">15-16</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">16-17</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">17-18</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">18-19</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">19-20</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">20-21</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">21-22</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">22-23</a></li>
+                                        <li><a style="background-color:#fff;color:#000;border:0px">23-00</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!--  <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div> -->
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Box Chart ends here -->
+            <!-- Copy Begins here -->
+            <!-- Modal layout begins -->
+            <!-- Modal -->
+            <div class="modal fade" id="myBubbleChartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!--      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button> -->
+                            <div style="float:left">
+                                <span data-dismiss="modal"><a style="cursor: pointer;"><img src="~/img/icons/ico-close.png"></a></span>
+                                <span style="padding:1px 9px"> SA by Airlines </span>
+                            </div>
+                            <div class="modalIconsDiv" style="float:right;">
+                                <ul>
+                                    <li>
+                                        <div class="selectDuration" style="float:left;">
+                                            <select class="">
+                                                <option>May 2015</option>
+                                                <option>Apr 2015</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="selectDirection" style="float:left;">
+                                            <select class="">
+                                                <option>All Directions</option>
+                                                <option>Arrival</option>
+                                                <option>Departure</option>
+                                            </select>
+                                        </div>
+                                    </li>
+                                    <li><a href="#"><span><img src="~/img/icons/arrow.png"></span></a></li>
+                                    <li><a href="#"><span><img src="~/img/icons/print.png"></span></a></li>
+                                    <li><a href="#"><span><img src="~/img/icons/book.png"></span></a></li>
+                                    <li><a href="#"><span><img src="~/img/icons/setting.png"></span></a></li>
+                                </ul>
+                            </div>
+                        </div><!-- modal header -->
+
+                        <div class="modal-body text-center" style="border-radius:0px">
+                            <div id="bubbleContainer" style="width:750px;border-radius:0px"></div>
+
+                            <!-- <img src="img/modal.jpg"> -->
+                        </div><!-- modal body -->
+                        <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                        </div> -->
+                        <!-- modal footer -->
+                        <div style="position: absolute;width: 100%;"><img src="~/img/bottom bar.png" style="width:100%"></div>
+                    </div><!-- modal content IMP -->
+                </div><!-- modal dialog -->
+            </div><!-- Modal wrapper. -->
+            <!-- Modal layout ends -->
+            <!-- Copy ends here. -->
+            <!-- Copy ends here. -->
+
+        </div>
+        <!-- /#wrapper -->
+        <!-- BootStrap & jQuery -->
+        <script src="~/js/jquery-1.11.2.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/js/barChart.js"></script>
+
+        <!-- Fusion Charts -->
+        <script src="~/js/fusion/fusioncharts.charts.js"></script>
+        <script src="~/js/fusion/fusioncharts.gantt.js"></script>
+        <script src="~/js/fusion/fusioncharts.js"></script>
+        <script src="~/js/fusion/fusioncharts.powercharts.js"></script>
+        <script src="~/js/fusion/fusioncharts.widgets.js"></script>
+        <script src="~/js/fusion/fusioncharts.theme.fint.js"></script>
+
+        <!-- SELECT js -->
+        <script type="text/javascript" src="~/js/select/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="~/js/select/jquery.selectbox-0.2.js"></script>
+
+        <script type="text/javascript">
+            var trafficHandled_Frequency;
+            var chartImg = "/img/icons/arrival.png";
+            var mImg = "/img/icons/ico-collapse-icon.png";
+            var pImg = "/img/icons/ico-expand-icon.png";
+
+            $(document).ready(function () {
+
+                $("#idDirection").change(function () {
+                    var idDirection = $('#idDirection').find(":selected").val();
+                    {
+                        LoadKPI2L2(idDirection); 
+                    }
+                   
+                    
+                    //alert(idDirection);
+                });
+
+                //$("#chartContainer2").hide();
+                $("#chartContainer2").hide();
+                $(this).children("img").attr("src", pImg)
+                chartImg = "/img/icons/arr_dep.png";
+                //LoadKPI2L2Intial();
+                //Loadonlyl2chart();
+                LoadKPI2L2("ALL");
+                var currentState = "block";
+
+                $(".chartMerge").click(function () {
+                    debugger;
+                    //var currentState = $(this).next(".description").css("display");
+                    //console.log(currentState);
+                    //alert(currentState);
+                    if (currentState == "block") {
+                        //alert(currentState);
+                        // $(this).next(".description").slideUp("slow");
+                        currentState = "none";
+                        //$("#chartContainer2").hide();
+                        $(this).children("img").attr("src", mImg)
+                        chartImg = "/img/icons/arr_dep.png";
+                        LoadKPI2L2Intial();
+
+                        $("#chartContainer2").show();
+                        //LoadKPI2L2();
+                    }
+                    else {
+                        //$(this).next(".description").slideDown("slow");
+                        $("#chartContainer2").hide();
+                        $(this).children("img").attr("src", pImg)
+                        chartImg = "/img/icons/arrival.png";
+                        currentState = "block";
+                        LoadKPI2L2("ALL");
+                    }
+                });
+
+            });
+
+            // Select js id
+            $(function () {
+                $(".country_id").selectbox();
+            });
+            function LoadKPI2L2(idDirection) {
+                $("#chartContainer2").hide();
+                if (idDirection.toLowerCase() == "all") {
+
+                    $(".chartMerge").children("img").attr("src", pImg);
+                    $(".chartMerge").show()
+                }
+                else {
+                    $(".chartMerge").hide()
+                }
+                alert(idDirection);
+                var BardatajsonObject = null, LolipopjsonObject = null, EKSeriesdatajsonObject = null, FDSeriesdatajsonObject = null, OALSeriesdatajsonObject = null;
+                trafficHandled_Frequency = $('#LolipopFrequency').find(":selected").text();
+                inPutdirection = idDirection;
+                $.ajax({
+                    url: "/Home/GetKPI2L2",
+                    //  url: "/Home/GetTrafficHandledL2",
+                    data: "Frequency=" + trafficHandled_Frequency,
+                    success: function (result) {
+                        //alert(result);
+
+                        BardatajsonObject = eval(result);
+                        $.ajax({
+                            url: "/Home/GetKPI2L2Tables",
+                            data: "TableType=" + 1 + "&direction=" + inPutdirection,
+                            success: function (result) {
+                                debugger;
+                                var parsedJsonObject = jQuery.parseJSON(result);
+                                if (Object.keys(parsedJsonObject).length == 5) {
+                                    var LolipopjsonObject = eval(parsedJsonObject.Table1);
+                                    var EKSeriesdatajsonObject = eval(parsedJsonObject.Table2);
+                                    var FDSeriesdatajsonObject = eval(parsedJsonObject.Table3);
+                                    var OALSeriesdatajsonObject = eval(parsedJsonObject.Table4);
+                                    if (BardatajsonObject != null && LolipopjsonObject != null && EKSeriesdatajsonObject != null && FDSeriesdatajsonObject != null && OALSeriesdatajsonObject != null)
+                                        CreateKPI2L2ChartLoadL1(BardatajsonObject, LolipopjsonObject, EKSeriesdatajsonObject, FDSeriesdatajsonObject, OALSeriesdatajsonObject, chartImg);
+                                }
+
+
+                                //            //for (var i = 0; i < parsedJsonObject.length; i++) {
+                                //            //    alert(i); console.log(i);
+                                //            //}
+                                //           // alert(result.1);
+                                //            // alert(result[1]);
+
+                                //            var LolipopjsonObject = eval(parsedJsonObject.Table1);
+                                //            var LolipopjsonObject = eval(result);
+                                //            //CreateKPI2L2ChartLoadL2(BardatajsonObject, LolipopjsonObject, EKSeriesdatajsonObject, FDSeriesdatajsonObject, OALSeriesdatajsonObject, chartImg);
+                                //            //console.log(LolipopjsonObject);
+                                //            //alert(LolipopjsonObject);
+                                //            $.ajax({
+                                //                url: "/Home/GetKPI2L2Tables",
+                                //                data: "TableType=" + 2 + "&direction=" + inPutdirection,
+                                //                success: function (result) {
+
+                                //                    var EKSeriesdatajsonObject = eval(result);
+                                //                    $.ajax({
+                                //                        url: "/Home/GetKPI2L2Tables",
+                                //                        data: "TableType=" + 3 + "&direction=" + inPutdirection,
+                                //                        success: function (result) {
+
+                                //                            var FDSeriesdatajsonObject = eval(result);
+                                //                            $.ajax({
+                                //                                url: "/Home/GetKPI2L2Tables",
+                                //                                data: "TableType=" + 4 + "&direction=" + inPutdirection,
+                                //                                success: function (result) {
+
+
+                                //                                    var OALSeriesdatajsonObject = eval(result);
+
+                                //                                    if (BardatajsonObject != null && LolipopjsonObject != null && EKSeriesdatajsonObject != null && FDSeriesdatajsonObject != null && OALSeriesdatajsonObject != null)
+                                //                                        CreateKPI2L2ChartLoadL1(BardatajsonObject, LolipopjsonObject, EKSeriesdatajsonObject, FDSeriesdatajsonObject, OALSeriesdatajsonObject, chartImg);
+                                //                                }
+                                //                            });
+                                //                        }
+                                //                    });
+                                //                }
+                                //            });
+                            }
+                        });
+
+                    }
+                });
+
+            }
+
+            function LoadKPI2L2Intial() {
+                debugger;
+                //alert('method1');
+                var BardatajsonObject = null, LolipopjsonObject = null, EKSeriesdatajsonObject = null, FDSeriesdatajsonObject = null, OALSeriesdatajsonObject = null;
+                trafficHandled_Frequency = $('#LolipopFrequency').find(":selected").text();
+                inPutdirection = "inbound";
+                $.ajax({
+                    url: "/Home/GetKPI2L2",
+                    //  url: "/Home/GetTrafficHandledL2",
+                    data: "Frequency=" + trafficHandled_Frequency,
+                    success: function (result) {
+                        //alert('in f1');
+
+                        BardatajsonObject = eval(result);
+                        $.ajax({
+                            url: "/Home/GetKPI2L2Tables",
+                            data: "TableType=" + 1 + "&direction=" + inPutdirection,
+                            success: function (result) {
+                                //alert('in f1');
+                                var parsedJsonObject = jQuery.parseJSON(result);
+                                //var LolipopjsonObject = eval(result);
+                                if (Object.keys(parsedJsonObject).length == 5) {
+                                    // alert('in');
+
+                                    var LolipopjsonObject = eval(parsedJsonObject.Table1);
+                                    var EKSeriesdatajsonObject = eval(parsedJsonObject.Table2);
+                                    var FDSeriesdatajsonObject = eval(parsedJsonObject.Table3);
+                                    var OALSeriesdatajsonObject = eval(parsedJsonObject.Table4);
+                                    if (BardatajsonObject != null && LolipopjsonObject != null && EKSeriesdatajsonObject != null && FDSeriesdatajsonObject != null && OALSeriesdatajsonObject != null)
+                                        CreateKPI2L2ChartLoadL1lazy(BardatajsonObject, LolipopjsonObject, EKSeriesdatajsonObject, FDSeriesdatajsonObject, OALSeriesdatajsonObject, chartImg);
+
+                                }
+
+                            }
+
+                        });
+                        Loadonlyl2chart();
+                    }
+                });
+
+                // Loadonlyl2chart();
+            } //LoadKPI2L2Intial();Loadonlyl2chart()
+
+            function Loadonlyl2chart() {
+                debugger;
+
+                //alert('method2');
+                //loading l2 chart
+                var BardatajsonObject = null, LolipopjsonObject = null, EKSeriesdatajsonObject = null, FDSeriesdatajsonObject = null, OALSeriesdatajsonObject = null;
+                trafficHandled_Frequency = $('#LolipopFrequency').find(":selected").text();
+                inPutdirection = "outbound";
+                $.ajax({
+                    url: "/Home/GetKPI2L2",
+                    //  url: "/Home/GetTrafficHandledL2",
+                    data: "Frequency=" + trafficHandled_Frequency,
+                    success: function (result) {
+                        //alert(result);
+
+                        BardatajsonObject = eval(result);
+                        $.ajax({
+                            url: "/Home/GetKPI2L2Tables",
+                            data: "TableType=" + 1 + "&direction=" + inPutdirection,
+                            success: function (result) {
+                                var parsedJsonObject = jQuery.parseJSON(result);
+                                if (Object.keys(parsedJsonObject).length == 5) {
+
+                                    var LolipopjsonObject = eval(parsedJsonObject.Table1);
+                                    var EKSeriesdatajsonObject = eval(parsedJsonObject.Table2);
+                                    var FDSeriesdatajsonObject = eval(parsedJsonObject.Table3);
+                                    var OALSeriesdatajsonObject = eval(parsedJsonObject.Table4);
+                                    if (BardatajsonObject != null && LolipopjsonObject != null && EKSeriesdatajsonObject != null && FDSeriesdatajsonObject != null && OALSeriesdatajsonObject != null)
+                                        CreateKPI2L2ChartLoadL2(BardatajsonObject, LolipopjsonObject, EKSeriesdatajsonObject, FDSeriesdatajsonObject, OALSeriesdatajsonObject, chartImg);
+                                }
+
+                            }
+                        });
+
+                    }
+                });
+            }
+
+            //$(document).ready(function () {
+
+            //    //LoadKPI2L2Intial();
+            //    //setTimeout(Loadonlyl2chart(), 3000);
+            //    //LoadKPI2L2();
+            //    $("#LolipopFrequency").change(function () {
+            //        LoadKPI2L2();
+            //    });
+            //});
+        </script>
+
+
+
+
+
+        <script src="~/js/highCharts/highcharts.js"></script>
+        <script src="~/js/highCharts/highcharts-more.js"></script>
+        <script src="~/js/highCharts/exporting.js"></script>
+</body>

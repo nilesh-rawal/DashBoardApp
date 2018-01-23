@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/simple-sidebar.css" rel="stylesheet"> -->
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <style type="text/css">
+        #wrapper {
+  padding-left: 50px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 50px;
+  background: #000;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+.sidebar-nav {
+  position: fixed;
+  top: 0;
+  width: 50px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+    </style>
+    
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header fixed-brand" style="background-color:#ccc">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">PLACEHOLDER</a>        
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <!-- <ul class="nav navbar-nav">
+                                <li class="active" >
+                                    <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2">
+                                    <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                                    </button>
+                                </li>
+                            </ul> -->
+                </div><!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            
+            <ul class="sidebar-nav nav-pills nav-stacked">
+                <li style="height:90px">
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/home.png"></span></a>
+                </li>
+                <li>
+                     <a href="#"><span><img src="img/icons/calendar.png"></span></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/setting.png"></span></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/search.png"></span></a>
+                </li>
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper" style="">
+            <div class="container-fluid">
+                 
+
+
+               
+
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        <div class="footer" style="color:#000">
+                Footer content... 
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/sidebar_menu.js"></script>
+
+    <script src="js/donutChartData.js"></script>
+    <script src="js/donutChartTheme.js"></script>
+    <script src="js/BarChart.js"></script>
+    
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+</body>
+
+</html>

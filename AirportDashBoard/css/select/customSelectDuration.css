@@ -1,0 +1,68 @@
+        .s-hiddenMonth {
+            visibility:hidden;
+            padding-right:10px;
+        }
+        .selectMonth {
+            cursor:pointer;
+            display:inline-block;
+            position:relative;
+            /*font:normal 11px/22px Arial, Sans-Serif;*/
+            color:black;
+            /*border:1px solid #ccc;*/
+            /*background: transparent url("img/select_arrow_down_old.png") no-repeat center;*/
+        }
+        .styledSelectMonth {
+            position:absolute;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding: 2px 2px;
+            background-color:white;
+            color: #fff;
+            /*padding:0 10px;*/
+            /*font-weight:bold;*/
+            background: transparent url("../../img/select_arrow_down.png") no-repeat 85px center;
+        }
+        .styledSelectMonth:after {
+            /*content:"";*/
+            width:0;
+            height:0;
+            /*border:5px solid transparent;*/
+            /*border-color:black transparent transparent transparent;*/
+            position:absolute;
+            top:0px;
+            right:0px;
+        }
+        /*.styledSelect:active, .styledSelect.active {
+        background-color:#eee;
+        }*/
+        .optionsMonth {
+            display:none;
+            position:absolute;
+            top:100%;
+            right:0;
+            left:0;
+            z-index:999;
+            margin:0 0;
+            padding:0 0;
+            list-style:none;
+            /*border:1px solid #ccc;*/
+            color:#fff;
+            background-color:#515151;
+            -webkit-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+            box-shadow:0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+        .optionsMonth li {
+            padding:0 6px;
+            margin:0 0;
+            padding:0 10px;
+        }
+        .optionsMonth li:hover {
+            background-color:#17DEFF;
+            color:white;
+        }

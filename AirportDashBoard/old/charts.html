@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Airpot Dashboard</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="css/simple-Chartsidebar.css" rel="stylesheet"> -->
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <link href="css/dashboard.css" rel="stylesheet">
+
+    <style type="text/css">
+    .panel-body {
+        padding: 0px 0px;
+        border:0;
+    }
+
+    .panel-transparent {
+    background: none;
+    border:0;
+    }
+
+    .panel-transparent .panel-heading{
+    background: rgba(234, 233, 232, 0.4)!important;
+    }
+
+    .panel-transparent .panel-body{
+    background: rgba(234, 233, 232, 0.3)!important;
+    }
+
+    .panel-footer  {
+        border:0;
+    }
+
+    .center {
+    margin: auto;
+    width: auto;
+    /*border:1px solid #8AC007;*/
+    padding: 18px;
+}
+
+.chart {
+  position: relative;
+  display: inline-block;
+  width: 110px;
+  height: 110px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+.chart canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.percent {
+  display: inline-block;
+  line-height: 110px;
+  z-index: 2;
+  font-size: 25px;
+  font-weight: 300;
+}
+.percent:after {
+  content: '%';
+  margin-left: 0.1em;
+  font-size: .8em;
+}
+
+.bgImgWrapper {
+    background-image:url(img/dashboardBg.png);
+    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+/*Select Box CSS*/
+select 
+    {
+        border:0px;
+        outline:0px;
+        /*-webkit-appearance:none; /* Safari and Chrome */*/
+        /*appearance:none;*/
+    }
+
+
+    .dropdown select {
+      border: 0 !important;        /*Removes border*/
+      -webkit-appearance: none;        /*Removes default chrome and safari style*/
+      -moz-appearance: none;          /* Removes Default Firefox style*/
+      background: url('img/Icons/select_arrow.png') no-repeat; /*Adds background-image*/
+      background-position: 82px 7px;                /*Position of the background-image*/
+      width: 100px;                /*Width of select dropdown to give space for arrow image*/
+}
+
+
+#myDiv {
+    /*display:none;*/
+    /*height: 150px;*/
+}
+
+#myDiv ul li { display: inline; }
+
+#myDiv ul li a
+{
+    float:left;
+    /*width: 20px;  */
+    /*height:20px; */
+    padding: 2px 15px;
+    /*border:1px solid; */
+    /*margin:10px*/
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.footer {
+    background-color:#000;
+    color:#fff;
+    height:30px;
+    padding:5px;
+    width: 100%;
+}
+
+
+/*footer div*/
+#footerDiv {
+    /*display:none;*/
+    /*height: 150px;*/
+    float:right;
+}
+
+#footerDiv ul li { display: inline; }
+
+#footerDiv ul li a
+{
+    float:left;
+    /*width: 20px;  */
+    /*height:20px; */
+    padding: 0px 15px;
+    /*border:1px solid; */
+    /*margin:10px*/
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.navbar-brand {
+    color: #9d9d9d;
+    text-decoration: none;
+    font-style: italic;
+}
+
+.img-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    text-align:center; /* Align center inline elements */
+    font: 0/0 a;
+}
+
+.img-container:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+.img-container img {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+#wrapper {
+  padding-left: 50px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 50px;
+  background: #000;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#page-content-wrapper {
+  width: 100%;
+}
+
+.sidebar-nav {
+  position: fixed;
+  top: 0;
+  width: 50px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-nav li {
+    text-indent: 15px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+</style>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top" style="background-color:none;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+                 <div class="navbar-header fixed-brand" style="background-color:#ccc">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">PLACEHOLDER</a>        
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color:#fff;">
+                <div id="myDiv" style="float:right; margin:10px">
+                    <ul>
+                        <li><a href="#"><span><img src="img/icons/arrow.png"></span></a></li>
+                        <li><a href="#"><span><img src="img/icons/print.png"></span></a></li>
+                        <li><a href="#"><span><img src="img/icons/book.png"></span></a></li>
+                        <li><a href="#"><span><img src="img/icons/info.png"></span></a></li>
+                        <li><a href="#"><span><img src="img/icons/resize.png"></span></a></li>
+                    </ul>
+                </div>
+                            <!-- <ul class="nav navbar-nav">
+                                <li class="active" >
+                                    <button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2">
+                                    <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                                    </button>
+                                </li>
+                            </ul> -->
+                </div><!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper" class="bgImgWrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+
+        <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <li style="height:90px">
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/home.png"></span></a>
+                </li>
+                <li>
+                     <a href="#"><span><img src="img/icons/calendar.png"></span></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/setting.png"></span></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/search.png"></span></a>
+                </li>
+            </ul>
+            
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper" >
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" style="height:45px;">
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-lg-8 col-md-8">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0;">
+                            <div class="panel-heading">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Airport Delay</div>
+                                <div class="text-right">
+                                    <select>
+                                        <option>Hourly</option>
+                                        <option>Daily</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div><!-- heading -->
+                            <div class="panel-body panel-transparent" style="opacity:0.7">
+                                <!-- <div id="morris-donut-chart"></div> -->
+                                <div id="chartContainer" onclick="location.href='charts.html'" style="height:250px"></div>
+                                <div class="panel-footer panel-transparent">
+                                    <div class="text-left" style="float:left">
+                                         <i class="glyphicon glyphicon-menu-left fa-lg" style="padding: 0px 5px;color:#fff;"></i>
+                                         <i class="glyphicon glyphicon-menu-right fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                     </div>
+                                    <div class="text-right">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                     <div class="col-lg-4 col-md-4">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Slot Adherence (SA)</div>
+                                <div class="text-right">
+                                    <select>
+                                        <option>Daily</option>
+                                        <option>Hourly</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body panel-transparent">
+                                <!-- <div id="morris-donut-chart"></div> -->
+                                <!-- <div id="Bar1Container" style="height:300px"></div> -->
+                                 <div id="" class="center" style="height:250px;color:#fff">
+                                    <table>
+                                    <tr><td></td><td>
+                                    <span class="chart" style="" data-percent="76">
+                                    <span class="percent" style=""></span>
+                                    </span></td><td></td></tr>
+
+                                    <tr><td>
+                                    <span class="chart" data-percent="50">
+                                    <span class="percent"></span>
+                                    </span></td>
+                                    <td></td>
+                                    <td>
+                                    <span class="chart" data-percent="28">
+                                    <span class="percent"></span>
+                                    </span></td></tr>
+                                    </table>
+                                </div>
+                                  <div class="panel-footer panel-transparent">
+                                    <div class="text-left" style="float:left">
+                                         <i class="glyphicon glyphicon-menu-left fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                         <i class="glyphicon glyphicon-menu-right fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                     </div>
+                                    <div class="text-right">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- row -->
+
+
+                <div class="row">
+                   
+                    <div class="col-lg-4">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Slot Utilisation</div>
+                                <div class="text-right">
+                                    <select>
+                                        <option>Daily</option>
+                                        <option>Hourly</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div><!-- heading -->
+                            <div class="panel-body">
+                                <!-- <div id="morris-line-chart"></div> -->
+                                <div id="Bar2Container" style="height:250px"></div>
+                               <div class="panel-footer panel-transparent">
+                                    <div class="text-left" style="float:left">
+                                         <i class="glyphicon glyphicon-menu-left fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                         <i class="glyphicon glyphicon-menu-right fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                     </div>
+                                    <div class="text-right">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Pier Service Level</div>
+                                <div class="text-right">
+                                    <select>
+                                        <option>Daily</option>
+                                        <option>Hourly</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <!-- <div id="morris-bar-chart"></div> -->
+                                <div style="height:250px;color:#fff" class="center">
+                                    <div style="padding:4px">Movements: 137&nbsp;&nbsp;<img src="img/slotBubble_1.png"></div>
+                                    <div style="padding:4px">Movements: 123&nbsp;&nbsp;<img src="img/slotBubble_2.png"></div>
+                                    <div style="padding:4px">Movements: 498&nbsp;&nbsp;<img src="img/slotBubble_3.png"></div>
+                                </div>
+                                  <div class="panel-footer panel-transparent">
+                                    <div class="text-left" style="float:left">
+                                         <i class="glyphicon glyphicon-menu-left fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                         <i class="glyphicon glyphicon-menu-right fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                     </div>
+                                    <div class="text-right">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3"> 
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading">
+                                <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Service Rate</div>
+                                <div class="text-right">
+                                    <select>
+                                        <option>Monthly</option>
+                                        <option>Hourly</option>
+                                        <option>Daily</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body panel-transparent">
+                                <!-- <div id="morris-line-chart"></div> -->
+                                 <div id="" style="height:250px;position: relative;width: auto;border: 0px solid black;">
+                                 <div style="padding-top: auto;"></div>
+                                 <div class="img-container">
+                                     <img src="img/15.png">
+                                 </div>
+                                 </div>
+                                   <div class="panel-footer panel-transparent">
+                                    <div class="text-left" style="float:left">
+                                         <i class="glyphicon glyphicon-menu-left fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                         <i class="glyphicon glyphicon-menu-right fa-lg" style="padding: 0px 5px;color:#fff"></i>
+                                     </div>
+                                    <div class="text-right">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select>
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        <div style="height:10px;"></div>
+        <div  class="footer" style="">
+            <div id="footerDiv">
+                    <ul>
+                        <li><a href="#"><span style="color:#17DEFF">FRI 19/06/2015</span></a></li>
+                        <li><a href="#"><span>OTP=75% (target 70%)</span></a></li>
+                        <li><a href="#"><span>Closed stands=31</span></a></li>
+                        <li><a href="#"><span>Single RW</span></a></li>
+                        <li><a href="#"><span style="color:#FF0000;font-weight:bold">Honeywell</span></a></li>
+                    </ul>
+            </div>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+
+    <script src="js/donutChartData.js"></script>
+    <script src="js/donutChartTheme.js"></script>
+    <script src="js/BarChart.js"></script>
+    
+    <!-- Fusion Charts -->
+    <script src="js/fusion/fusioncharts.charts.js"></script>
+    <script src="js/fusion/fusioncharts.gantt.js"></script>
+    <script src="js/fusion/fusioncharts.js"></script>
+    <script src="js/fusion/fusioncharts.powercharts.js"></script>
+    <script src="js/fusion/fusioncharts.widgets.js"></script>
+    <script src="js/fusion/fusioncharts.theme.fint.js"></script>
+    <script src="js/fusion/lollipopChart.js"></script>
+
+    <!-- Pie Charts -->
+    <script type="text/javascript" src="js/pieChart/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="js/pieChart/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="js/pieChart/jquery.easypiechart.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+        $('.chart').easyPieChart({
+            easing: 'easeOutBounce',
+            onStep: function(from, to, percent) {
+                $(this.el).find('.percent').text(Math.round(percent));
+            },
+            size: 110,
+            // animate: 2000,
+            lineCap: 'butt',
+            scaleColor: false,
+            barColor: '#17DEFF',
+            lineWidth: 2
+        });
+        // var chart = window.chart = $('.chart').data('easyPieChart');
+        // $('.js_update').on('click', function() {
+        //  chart.update(Math.random()*200-100);
+        // });
+    });
+    </script>
+
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+</body>
+
+</html>

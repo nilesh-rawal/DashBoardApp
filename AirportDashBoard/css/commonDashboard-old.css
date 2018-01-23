@@ -1,0 +1,331 @@
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900);
+
+/* Font CSS*/
+* {
+    font-family: 'Roboto';
+    font-weight: 100;
+}
+
+.roboto {
+    font-family: "Roboto";
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(http://fonts.gstatic.com/s/roboto/v15/CWB0XYA8bzo0kSThX0UTuA.woff2) format('woff2');
+}
+
+
+/* Dasboard Background Image */
+.bgDashboardImgWrapper {
+    background-image:url(../img/dashboardBg.png);
+    background-size: 100% 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+/* Dashboard Side Bar CSS */
+.sideMenu {
+    position: absolute;
+    /*top: 0;*/
+    width: 250px;
+    /*margin: 0;*/
+    /*padding: 0;*/
+    list-style: none;
+    /*margin-top: 2px;*/
+}
+
+.sideIcons {
+    padding:5px 0px;
+}
+
+ .navbar-nav > li > a, .navbar-brand {
+    padding-top:4px !important; 
+    padding-bottom:0 !important;
+    height: 38px;
+}
+ .navbar {min-height:38px !important;}
+
+
+ /*SideBar Issues*/
+.center-block {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group .icon-addon .form-control {
+    border-radius: 0;
+}
+
+.icon-addon {
+    position: relative;
+    color: #555;
+    display: block;
+}
+
+.icon-addon:after,
+.icon-addon:before {
+    display: table;
+    content: " ";
+}
+
+.icon-addon:after {
+    clear: both;
+}
+
+.icon-addon.addon-md .glyphicon,
+.icon-addon .glyphicon, 
+.icon-addon.addon-md .fa,
+.icon-addon .fa {
+    position: absolute;
+    z-index: 2;
+    left: 10px;
+    font-size: 14px;
+    width: 20px;
+    margin-left: -2.5px;
+    text-align: center;
+    padding: 10px 0;
+    top: 1px
+}
+
+.icon-addon.addon-lg .form-control {
+    line-height: 1.33;
+    height: 46px;
+    font-size: 18px;
+    padding: 10px 16px 10px 40px;
+}
+
+.icon-addon.addon-sm .form-control {
+    height: 30px;
+    padding: 5px 10px 5px 28px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.icon-addon.addon-lg .fa,
+.icon-addon.addon-lg .glyphicon {
+    font-size: 18px;
+    margin-left: 0;
+    left: 11px;
+    top: 4px;
+}
+
+.icon-addon.addon-md .form-control,
+.icon-addon .form-control {
+    padding-left: 30px;
+    float: left;
+    font-weight: normal;
+}
+
+.icon-addon.addon-sm .fa,
+.icon-addon.addon-sm .glyphicon {
+    margin-left: 0;
+    font-size: 12px;
+    left: 5px;
+    top: -1px
+}
+
+.icon-addon .form-control:focus + .glyphicon,
+.icon-addon:hover .glyphicon,
+.icon-addon .form-control:focus + .fa,
+.icon-addon:hover .fa {
+    color: #2580db;
+}
+
+
+/* Dashboard Panel CSS */
+
+.center {
+    margin: auto;
+    width: auto;
+    /*border:1px solid #8AC007;*/
+    padding: 18px;
+}
+
+.panel-body {
+    padding: 0px 0px;
+    border:0;
+}
+
+.panel-transparent {
+background: none;
+border:0;
+}
+
+.panel-transparent .panel-heading{
+background: rgba(234, 233, 232, 0.4)!important;
+}
+
+.panel-transparent .panel-body{
+background: rgba(234, 233, 232, 0.3)!important;
+}
+
+.panel-footer  {
+    border:0;
+}
+
+
+/* Dashboard PieChart CSS */
+.chart { position: relative; display: inline-block; width: 100px; height: 100px; margin-top: 0px; margin-bottom: 0px;  text-align: center;}
+.chart canvas {position: absolute; top: 0; left: 0;}
+.percent { display: inline-block; line-height: 100px; z-index: 2; font-size: 25px; font-weight: 300; font-weight: bold;}
+.percent:after { content: '%'; margin-left: 0.1em; font-size: .8em;}
+
+
+.chartSmall { position: relative; display: inline-block; width: 80px; height: 80px; margin-top: 0px; margin-bottom: 0px;  text-align: center;}
+.chartSmall canvas {position: absolute; top: 0; left: 0;}
+.percentSmall { display: inline-block; line-height: 80px; z-index: 2; font-size: 22px; font-weight: 300;}
+.percentSmall:after { content: '%'; margin-left: 0.1em; font-size: .8em;}
+
+
+/* headerIcons CSS */
+.headerIconsDiv {
+    /*display:none;*/
+    /*height: 150px;*/
+}
+
+.headerIconsDiv ul li { display: inline; }
+
+.headerIconsDiv ul li a
+{
+    float:left;
+    /*width: 20px;  */
+    /*height:20px; */
+    padding: 2px 15px;
+    /*border:1px solid; */
+    /*margin:10px*/
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* Footer CSS */
+.footer {
+    background-color:#000;
+    color:#fff;
+    height:30px;
+    padding:5px;
+    width: 100%;
+}
+
+
+/*footer div*/
+#footerDiv {
+    /*display:none;*/
+    /*height: 150px;*/
+    float:right;
+}
+
+#footerDiv ul li { display: inline; }
+
+#footerDiv ul li a
+{
+    float:left;
+    /*width: 20px;  */
+    /*height:20px; */
+    padding: 0px 15px;
+    /*border:1px solid; */
+    /*margin:10px*/
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+/* KPI CSS */
+
+
+/* SELECT CSS */
+.selectParent{
+    width:100px;
+    overflow:hidden;
+}
+
+.selectParent select{
+    width: 100px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 2px 2px;
+    border: none;
+    color:#fff;
+    background: transparent url("../img/select_arrow_down.png") no-repeat 65px center;
+}
+
+.selectParent select option{
+    background-color: #515151;
+    opacity: 0.8;
+    list-style: none;
+    left: -1px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    width: 120px;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+        .selectParentDate{
+    width:70px;
+    overflow:hidden;
+}
+
+.selectParentDate select{
+    width: 70px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 2px 2px;
+    border: none;
+    color:#fff;
+    background: transparent url("../img/select_arrow_down.png") no-repeat 50px center;
+}
+
+.selectParentDate select option{
+    background-color: #515151;
+    opacity: 0.8;
+    list-style: none;
+    left: -1px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 30px;
+    width: 120px;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+
+/*SELECT CSS */
+
+    .mSummary{
+width: 780px;
+margin: 30px 15%;
+}
+
+@media only screen 
+  and (min-width: 1401px) 
+  and (max-width: 1700px){
+  .mSummary {
+margin: 30px 7%;
+}
+  }
+
+@media only screen and (max-width : 1400px) {
+.mSummary {
+margin: 30px 45px;
+}

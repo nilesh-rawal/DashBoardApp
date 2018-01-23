@@ -1,0 +1,479 @@
+﻿<head>
+
+    <title>Airpot Dashboardss</title>
+
+    <!-- Common CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/normalize.css" rel="stylesheet">
+    <link href="~/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+   @* <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>*@
+    <link href="~/css/commonDashboard.css" rel="stylesheet">
+
+    <!-- Chart KPI CSS -->
+    <link href="~/css/chartKPI.css" rel="stylesheet">
+    @*<link href="~/css/select/jquery.selectbox.css" rel="stylesheet">*@
+
+    <!-- BootStrap & jQuery -->
+
+    <script type="text/javascript" src="~/js/select/jquery-1.7.2.min.js"></script>
+    @*<script type="text/javascript" src="~/js/select/jquery.selectbox-0.2.js"></script>*@
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+
+    <!-- Fusion Charts -->
+    <script src="~/js/fusion/fusioncharts.charts.js"></script>
+    <script src="~/js/fusion/fusioncharts.gantt.js"></script>
+    <script src="~/js/fusion/fusioncharts.js"></script>
+    <script src="~/js/fusion/fusioncharts.powercharts.js"></script>
+    <script src="~/js/fusion/fusioncharts.widgets.js"></script>
+    <script src="~/js/fusion/fusioncharts.theme.fint.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+    @*<script src="~/js/fusion/lollypopReverse.js"></script>*@
+    <!-- SELECT js -->
+
+    <style>
+        .panel-transparent .panel-body {
+            background: rgba(115, 136, 142, 0.7) !important;
+        }
+
+        #legendsList ul {
+            list-style-type: none;
+        }
+
+        #legendsList ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+
+            #legendsList ul li {
+                display: inline;
+                text-decoration: none;
+                margin: 0px 10px;
+                padding: 0px 15px;
+                color: #fff;
+                cursor: default;
+            }
+
+        .legendsColor {
+            background-color: #FF0000;
+            height: 10px;
+            width: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top" style="background-color: none;position:absolute">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header fixed-brand">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="color: #fff; font-size: 13px">Placeholder</a>
+        </div>
+        <!-- navbar-header-->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color: #fff;">
+            <div class="headerIconsDiv" style="float: right; margin: 10px">
+                <ul>
+                    <li style="width:840px;float:left">Sat 20/06/2015 - 18:02 (UTC)</li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/arrow.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/print.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/book.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/info.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/resize.png">
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- bs-example-navbar-collapse-1 -->
+    </nav>
+
+    <div id="wrapper" class="bgImgWrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" style="margin-top:65px">
+
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <li style="height: 350px">
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a onclick="onclickHome()" style="cursor:pointer">
+                        <span>
+                            <img src="~/img/icons/home.png">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>
+                            <img src="~/img/icons/calendar.png">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>
+                            <img src="~/img/icons/setting.png">
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>
+                            <img src="~/img/icons/search.png">
+                        </span>
+                    </a>
+                </li>
+                <li style="margin-top:210px">
+                    <a href="#">
+                        <span>
+                            <img src="~/img/icons/7.png" />
+                        </span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <div style="height: 20px"></div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" style="height: 45px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="panel panel-default panel-transparent" style="border-radius: 0;">
+                            <div class="panel-heading" style="font-family: 'Roboto'; font-weight: 100;">
+                                <!-- <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Airport Delay</div> -->
+                                <div id="panelDiv" class="panel-title" style="">
+                                    <ul>
+                                        <li>
+                                            <a onclick="OpenAirportDelayKPI()" class="panelActive" style="cursor:pointer">
+                                                Airport<br>
+                                                Delay
+                                            </a>
+                                        </li>
+                                        <li><a onclick="OpenslotAdherenceKPI()" style="cursor:pointer">Slot Adherence</a></li>
+                                        <li><a href="#">Slot<br/>Utilisation</a></li>
+                                        <li><a href="#">Pier Service Level</a></li>
+                                        <li>
+                                            <a href="#">
+                                                Service<br>
+                                                Rate
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div id="filterDiv" class="panel-title" style="">
+                                    <ul class="filterUl">
+                                        <li class="filterLi">
+                                            <div class="selectDuration">
+                                                <select class="" id="LolipopFrequency">
+                                                    <option>Hourly</option>
+                                                    <option>Daily</option>
+                                                    <option>Monthly</option>
+                                                    <option>Yearly</option>
+                                                </select>
+                                            </div>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDuration">
+                                                <select class="" id="datepickerairportdelay">
+                                                    <option value="2015-06-17">17/06</option>
+                                                    <option value="2015-06-18">18/06</option>
+                                                    <option value="2015-06-19">19/06</option>
+                                                    <option value="2015-06-20">20/06</option>
+                                                    <option value="2015-06-21">21/06</option>
+                                                    <option value="2015-06-22" selected="1">22/06</option>
+                                                    <option value="2015-06-23">23/06</option>
+                                                    <option value="2015-06-24">24/06</option>
+                                                </select>
+                                            </div>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDirection" id="idDirection">
+                                                <select class="">
+                                                    <option value="All Directions">All Directions</option>
+                                                    <option value="Arrival">Arrival</option>
+                                                    <option value="Departure">Departure</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- heading -->
+                            <div class="panel-body" style="background-color: #73888E">
+                                <!-- <div id="morris-donut-chart"></div> -->
+
+                                <div id="chartContainer" class="" style="height: 100%; padding: 0; margin: 0"></div>
+
+
+                                <div id="" class="chartMerge" style="padding: 0px 0px; margin-top: -34px; margin-right: 35px; float: right">
+                                    <img src="/img/icons/ico-expand-icon.png">
+                                </div>
+
+                                <div id="chartContainer2" class="description" style="height: 100%; padding: 0; margin-left: 37px; margin-top: -25px"></div>
+                                <div style="height: 68px;"></div>
+                                <div class="panel-footer panel-transparent">
+                                    <div class="" style="float: left">
+                                        <span style="padding: 0px 9px">
+                                            <img src="~/img/arrowleft.png" width="" height="">
+                                        </span>
+                                        <span style="padding: 0px 9px">
+                                            <img src="~/img/arrowryt.png" width="" height="">
+                                        </span>
+                                    </div>
+                                    <div style="float:right">
+                                        <span style="padding:0"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 10px"></span>
+                                        <span style="padding:0"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                        <span style="padding:0"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                    </div>
+                                    <div id="legendsList" style="text-align: center">
+                                        <ul>
+                                            <li><span class="legendsColor" style="background-color: #AFAFAF;"></span>&nbsp;&nbsp;Throughput</li>
+                                            <li><span class="legendsColor" style="background-color: #FFE504;"></span>&nbsp;&nbsp;Declared</li>
+                                            <li><span class="legendsColor" style="background-color: #FFAC61;"></span>&nbsp;&nbsp;Scheduled</li>
+                                            <li><span class="legendsColor" style="background-color: #FFFFFF;"></span>&nbsp;&nbsp;Actual</li>
+                                            <li><span class="legendsColor" style="background-color: #EE7C7D;border-radius:6px"></span>&nbsp;&nbsp;Single RWY</li>
+                                        </ul>
+                                    </div>
+                                    <!-- <div class="text-left" style="float:right">
+                                        <span style="padding:0"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 9px"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 9px"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                        <span style="padding:0"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                     </div> -->
+                                </div>
+                                <!-- arrow & Select box -->
+                                @*<div style="height: 30px"></div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- row -->
+            </div>
+            <!-- /#page-content-wrapper -->
+
+            <div class="footer" style="font-family: 'Roboto'; font-weight: 100;">
+                <span style="float: right; padding: 0px 4px;color:#FF0000;font-weight:bold;">Honeywell</span>
+                <div id="footerDiv" style="width: 93%; font-family: 'Roboto'; font-weight: 100;margin-top:-9px">
+                    <marquee>
+                        <ul>
+                            <li><a href="#"><span style="color: #17DEFF">FRI 19/06/2015</span></a></li>
+                            <li><a href="#"><span>SA = 75% (target 70%)</span></a></li>
+                            <li><a href="#"><span>Slot Utilisation = 75%</span></a></li>
+                            <li><a href="#"><span>Pier Service Level = EK 100/137 Contacts&nbsp;;&nbsp;FZ 59/123 Contacts&nbsp;;&nbsp;OAL 116/498 Contacts</span></a></li>
+                            <li><a href="#"><span>Service Rate = 120</span></a></li>
+                            <!--<li><a href="#"><span style="color:#FF0000;font-weight:bold">Honeywell</span></a></li>-->
+                        </ul>
+                    </marquee>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        /* Collapsible code */
+        var chartImg = "/img/icons/arrival.png";
+        var mImg = "/img/icons/ico-collapse-icon.png";
+        var pImg = "/img/icons/ico-expand-icon.png";
+
+        /*today added */
+        var trafficHandled_Frequency = location.search.split('frequency=')[1];
+        if (trafficHandled_Frequency === undefined)
+            trafficHandled_Frequency = 'Hourly';
+        //var trafficHandled_Frequency = 'Hourly';
+
+        $(document).ready(function () {
+            $("#LolipopFrequency").val(trafficHandled_Frequency); // today added
+
+            /*Today changes*/
+            $("#chartContainer2").hide();
+            $(this).children("img").attr("src", pImg)
+            chartImg = "/img/icons/arr_dep.png";
+            //$('#idDirection').val('Arrival').change();
+            timeperiod = $('#datepickerairportdelay').val();
+            Arrival($('#LolipopFrequency').find(":selected").text(), 'all', timeperiod);
+
+
+            $(".chartMerge").click(function () {
+                debugger;
+                var currentState = $(this).next(".description").css("display");
+                console.log(currentState);
+                if (currentState == "block") {
+                    // $(this).next(".description").slideUp("slow");
+                    $("#chartContainer2").hide();
+                    $(this).children("img").attr("src", pImg)
+                    chartImg = "/img/icons/arr_dep.png";
+                    //$('#idDirection').val('Arrival').change();
+                    timeperiod = $('#datepickerairportdelay').val();
+                    Arrival($('#LolipopFrequency').find(":selected").text(), 'all', timeperiod);
+                }
+                else {
+                    //$(this).next(".description").slideDown("slow");
+                    $("#chartContainer2").show();
+                    $(this).children("img").attr("src", mImg)
+                    chartImg = "/img/icons/arrival.png";
+                    $('#idDirection').val('Departure').change();
+
+                    LoadLolipopChartKPIL1L2();
+                }
+            });
+
+        });
+        function LoadLolipopChartKPIL1L2() {
+            // debugger;
+            trafficHandled_Frequency = $('#LolipopFrequency').find(":selected").text();
+            timeperiod = $('#datepickerairportdelay').val();
+            ArrivalDeparture(trafficHandled_Frequency, timeperiod);
+        }
+
+        function LoadLolipopChartL2() {
+            //alert('hello');
+            //debugger;
+            //alert('in 1');
+            trafficHandled_Frequency = $('#LolipopFrequency').find(":selected").text();
+            timeperiod = $('#datepickerairportdelay').val();
+            var idDirection = $('#idDirection').find(":selected").text();
+            // alert('hello');
+            if (idDirection == "All Directions") {
+                ArrivalDeparture(trafficHandled_Frequency, timeperiod);
+                $("#chartContainer2").show();
+                $(".chartMerge").show();
+                $(".chartMerge").children("img").attr("src", mImg)
+                chartImg = "/img/icons/arrival.png";
+            }
+            else {
+                $(".chartMerge").children("img").attr("src", pImg)
+                
+                if (idDirection == "Arrival") {
+                    chartImg = "/img/icons/arrival.png";
+                    Arrival(trafficHandled_Frequency, "inbound", timeperiod);
+                    $(".chartMerge").hide();
+                }
+                if (idDirection == "Departure") {
+
+                    chartImg = "/img/icons/depart.png";
+                    Arrival(trafficHandled_Frequency, "outbound", timeperiod);
+                    $(".chartMerge").hide();
+                }
+                $("#chartContainer2").hide();
+            }a
+        }
+
+        function Arrival(frequency, direction, timeperiod) {
+
+            $.ajax({
+                url: "/Home/GetTrafficHandledL2",
+                dataType: 'json',
+                data: { "Frequency": frequency, "Direction": direction, "fromdate": timeperiod },
+                success: function (result) {
+                    var jsonObject = eval(result);
+                   // alert(chartImg + direction);
+                    GetLolipopChartL2(jsonObject, chartImg);
+                }
+            });
+        }
+        function Departure(frequency, timeperiod) {
+            $.ajax({
+                url: "/Home/GetTrafficHandledL2",
+                dataType: 'json',
+                data: { "Frequency": frequency, "Direction": "outbound", "fromdate": timeperiod },
+                success: function (result) {
+                    var jsonObject = eval(result);
+                    //alert('hello');
+                    GetKPI1L2ReverseChart(jsonObject);
+                }
+            });
+        }
+        function ArrivalDeparture(frequency, timeperiod) {
+            //debugger;
+
+            $.ajax({
+                url: "/Home/GetTrafficHandledL2",
+                dataType: 'json',
+                data: { "Frequency": frequency, "Direction": "inbound", "fromdate": timeperiod },
+                success: function (result) {
+                    var arrivaljsonObject = eval(result);
+                    $.ajax({
+                        url: "/Home/GetTrafficHandledL2",
+                        dataType: 'json',
+                        data: { "Frequency": frequency, "Direction": "outbound", "fromdate": timeperiod },
+                        success: function (result) {
+                            var departurejsonObject = eval(result);
+                            CreateKPI1L2ArrivalDepartureChart(arrivaljsonObject, departurejsonObject);
+                        }
+                    });
+                }
+            });
+
+
+        }
+
+        $(document).ready(function () {
+            // alert('hello');
+            //LoadLolipopChartL2();
+            $("#LolipopFrequency").change(function () {
+                LoadLolipopChartL2();
+            });
+            $("#idDirection").change(function () {
+                debugger; 
+
+                LoadLolipopChartL2();
+            });
+            $("#datepickerairportdelay").change(function () {
+                // alert('hello');
+                LoadLolipopChartL2();
+            });
+
+        });
+    </script>
+
+
+</body>
+

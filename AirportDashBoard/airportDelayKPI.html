@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Airpot Dashboard</title>
+
+    <!-- Common CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="css/commonDashboard.css" rel="stylesheet">
+
+    <!-- Chart KPI CSS -->
+    <link href="css/chartKPI.css" rel="stylesheet">
+    <!-- <link href="css/select/jquery.selectbox.css" rel="stylesheet"> -->
+
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top" style="background-color:none;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+                 <div class="navbar-header fixed-brand" style="background-color:none">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>        
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color:#fff;">
+                    <div class="headerIconsDiv" style="float:right; margin:10px">
+                        <ul>
+                            <li><a href="#"><span><img src="img/icons/arrow.png"></span></a></li>
+                            <li><a href="#"><span><img src="img/icons/print.png"></span></a></li>
+                            <li><a href="#"><span><img src="img/icons/book.png"></span></a></li>
+                            <li><a href="#"><span><img src="img/icons/info.png"></span></a></li>
+                            <li><a href="#"><span><img src="img/icons/resize.png"></span></a></li>
+                        </ul>
+                    </div>
+                </div><!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper" class="bgImgWrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+
+        <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <li style="height:150px">
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="dashboard.html"><span><img src="img/icons/home.png"></span></a>
+                </li>
+                <li>
+                     <a href="#"><span><img src="img/icons/calendar.png"></span></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/setting.png"></span></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/search.png"></span></a>
+                </li>
+            </ul>
+            
+        </div><!-- /#sidebar-wrapper -->
+
+        <div style="height:20px"></div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" >
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" style="height:45px;">
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0;">
+                            <div class="panel-heading">
+                                <!-- <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Airport Delay</div> -->
+                                <div id="panelDiv" class="panel-title" style="">
+                                    <ul>
+                                    <li><a href="airportDelayKPI.html" class="panelActive">Airport<br>Delay</a></li>
+                                    <li><a href="slotAdherenceKPI.html">Slot Adherence</a></li>
+                                    <li><a href="#">Slot Utilization</a></li>
+                                    <li><a href="#">Pier Service Level</a></li>
+                                    <li><a href="#">Service<br>Rate</a></li>
+                                    </ul>
+                                </div>
+
+                                 <div id="filterDiv" class="panel-title" style="">
+                                    <ul class="filterUl">
+                                        <li class="filterLi">
+                                            <div class="selectDuration">
+                                                <select class="">
+                                                    <option>Hourly</option>
+                                                    <option>Daily</option>
+                                                    <option>Monthly</option>
+                                                    <option>Yearly</option>
+                                                </select>
+                                            </div>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDuration">
+                                                <select class="">
+                                                    <option>Fri 19/06</option>
+                                                    <option>Fri 09/06</option>
+                                                    <option>Fri 29/06</option>
+                                                    <option>Fri 13/06</option>
+                                                </select>
+                                            </div>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDirection">
+                                                <select class="">
+                                                    <option>All Directions</option>
+                                                    <option>Arrival</option>
+                                                    <option>Departure</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- heading -->
+                            <div class="panel-body panel-transparent" style="opacity:0.7">
+                                <!-- <div id="morris-donut-chart"></div> -->
+                                <div id="chartContainer" class="" style="height:100%;padding: 10px 70px"></div>
+
+                                <div id="" class="chartMerge" style="padding:3px 8px;float:right">
+                                    <img src="img/icons/ico-collapse-icon.png">
+                                </div>
+
+                                <div id="chartContainer2" class="description" style="height:100%;padding: 10px 70px"></div>
+
+                                <div class="panel-footer panel-transparent">
+                                    <div class="" style="float:left">
+                                        <span style="padding:0px 9px"><img src="img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 9px"><img src="img/arrowryt.png" width="" height=""></span>
+                                     </div>
+                                     <!-- <div class="text-left" style="float:right">
+                                        <span style="padding:0"><img src="img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 9px"><img src="img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 9px"><img src="img/arrowryt.png" width="" height=""></span>
+                                        <span style="padding:0"><img src="img/arrowryt.png" width="" height=""></span>
+                                     </div> -->
+                                </div><!-- arrow & Select box -->
+                                <div style="height:30px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- row -->
+        </div>
+        <!-- /#page-content-wrapper -->
+        <div style="height:50px;"></div>
+        <div  class="footer" style="">
+            <div id="footerDiv">
+                    <ul>
+                        <li><a href="#"><span style="color:#17DEFF">FRI 19/06/2015</span></a></li>
+                        <li><a href="#"><span>SA = 75% (target 70%)</span></a></li>
+                        <li><a href="#"><span>Slot Utilization = 75%</span></a></li>
+                        <li><a href="#"><span>Pier Service Level = EK 100/137 Contacts;&nbsp;FZ 59/123 Contacts&nbsp;;&nbsp;OAL 116/498 Contacts</span></a></li>
+                        <li><a href="#"><span>Service Rate</span></a></li>
+                        <li><a href="#"><span style="color:#FF0000;font-weight:bold">Honeywell</span></a></li>
+                    </ul>
+            </div>
+        </div>
+
+    </div>
+        </div>
+    <!-- /#wrapper -->
+
+    <!-- BootStrap & jQuery -->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <!-- Fusion Charts -->
+    <script src="js/fusion/fusioncharts.charts.js"></script>
+    <script src="js/fusion/fusioncharts.gantt.js"></script>
+    <script src="js/fusion/fusioncharts.js"></script>
+    <script src="js/fusion/fusioncharts.powercharts.js"></script>
+    <script src="js/fusion/fusioncharts.widgets.js"></script>
+    <script src="js/fusion/fusioncharts.theme.fint.js"></script>
+    <script src="js/fusion/lollipopChart.js"></script>
+    <script src="js/fusion/lollypopReverse.js"></script>
+
+    <!-- SELECT js -->
+    <script type="text/javascript" src="js/select/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/select/jquery.selectbox-0.2.js"></script>
+    
+    <script type="text/javascript">
+        /* Collapsible code */
+        // var mImg = "img/icons/ico-collapse.png";
+        // var pImg = "img/icons/ico-expand.png";
+
+        // $(document).ready(function(){
+        //     $(".collapseClass").click(function(){
+        //     var currentState = $(this).next(".chartContainerCls").css("display");
+        //     console.log(currentState);
+        //     if(currentState == "block"){
+        //         $(this).next(".chartContainerCls").slideUp("slow");
+        //         $(this).children("img").attr("src", pImg)
+        //     }
+        //     else{
+        //         $(this).next(".chartContainerCls").slideDown("slow");
+        //         $(this).children("img").attr("src", mImg)
+        //     }
+        // });
+        // });
+    </script>
+
+    <script type="text/javascript">
+        var mImg = "img/icons/ico-collapse-icon.png";
+        var pImg = "img/icons/ico-expand-icon.png";
+        $(document).ready(function(){
+            $(".chartMerge").click(function(){
+                var currentState = $(this).next(".description").css("display");
+                console.log(currentState);
+                if(currentState == "block"){
+                    $(this).next(".description").slideUp("slow");
+                    $(this).children("img").attr("src", pImg)
+                }
+                else{
+                    $(this).next(".description").slideDown("slow");
+                    $(this).children("img").attr("src", mImg)
+                }
+            });
+        });
+</script>
+</body>
+</html>

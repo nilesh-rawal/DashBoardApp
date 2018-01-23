@@ -1,0 +1,524 @@
+<head>
+
+   
+    <title>Airpot Dashboard</title>
+
+    <!-- Common CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/normalize.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href="css/commonDashboard.css" rel="stylesheet">
+
+    <!-- Chart KPI CSS -->
+    <link href="css/chartKPI.css" rel="stylesheet">
+    <link href="css/select/jquery.selectbox.css" rel="stylesheet">
+
+    <style type="text/css">
+
+        .panel-transparent .panel-body{
+            background: rgba(115, 136, 142, 0.7)!important;
+}
+    
+   /* .modal-content{
+        width: 800px;
+        height: auto;
+    }*/
+
+    .modal-header {
+        border-radius: 0px;
+        background-color: #000;
+        color:#fff;
+        height:50px;
+    }
+
+    .modalIconsDiv {
+    /*display:none;*/
+    /*height: 150px;*/
+    }
+
+    .modalIconsDiv ul li { display: inline; }
+
+    .modalIconsDiv ul li a
+    {
+        float:left;
+        height: 70px;
+        padding: 0px 15px;
+        /*border:1px solid; */
+        /*margin:10px*/
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .myDiv {
+        /*height: 45px;*/
+        /*padding: 2px 0px;*/
+    }
+
+    .myDiv ul li 
+    { 
+        display: inline; 
+        /*border:1px solid;*/
+    }
+
+    .myDiv ul li a
+    {
+        float:left;
+        border:1px solid; 
+        padding: 12px 12px;
+        height: 44px;
+        width: 61px;
+        color: #fff;
+        margin: 0x 2px;
+        text-align: center;
+        text-decoration: none;
+        background-color:#b9f79e;
+        font-weight: 300;
+    }
+    </style>
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top" style="background-color:none;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+                 <div class="navbar-header fixed-brand" style="background-color:none;">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"></a>        
+                </div><!-- navbar-header-->
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color:#fff;">
+                    <div class="headerIconsDiv" style="float:right; margin:10px">
+                        <ul>
+                            <li><a href="#"><span><img src="img/icons/arrow.png"></span></a></li>
+                            <li><a href="#"><span><img src="img/icons/print.png"></span></a></li>
+                            <li><a href="#"><span><img src="img/icons/book.png"></span></a></li>
+                            <li><a href="#"><span><img src="img/icons/info.png"></span></a></li>
+                            <li><a href="#"><span><img src="img/icons/resize.png"></span></a></li>
+                        </ul>
+                    </div>
+                </div><!-- bs-example-navbar-collapse-1 -->
+    </nav>
+    <div id="wrapper" class="bgImgWrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+
+        <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+                <li style="height:150px">
+                    <a href="#"></a>
+                </li>
+                <li>
+                    <a href="dashboard.html"><span><img src="img/icons/home.png"></span></a>
+                </li>
+                <li>
+                     <a href="#"><span><img src="img/icons/calendar.png"></span></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/setting.png"></span></a>
+                </li>
+                <li>
+                    <a href="#"><span><img src="img/icons/search.png"></span></a>
+                </li>
+            </ul>
+            
+        </div><!-- /#sidebar-wrapper -->
+
+        <div style="height:20px"></div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" >
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" style="height:45px;">
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0;">
+                            <div class="panel-heading">
+                                <!-- <div class="panel-title" style="float:left;color:#fff;font-weight: 300;">Airport Delay</div> -->
+                                <div id="panelDiv" class="panel-title" style="">
+                                    <ul>
+                                    <li ><a href="airportDelayKPI.html">Airport<br>Delay</a></li>
+                                    <li><a href="slotAdherenceKPI.html" class="panelActive">Slot Adherence</a></li>
+                                    <li><a href="#">Slot Utilization</a></li>
+                                    <li><a href="#">Pier Service Level</a></li>
+                                    <li><a href="#">Service<br>Rate</a></li>
+                                    </ul>
+                                </div>
+
+                                 <div id="filterDiv" class="panel-title" style="">
+                                    <ul class="filterUl">
+                                        <li class="filterLi" style="line-height: 30px;">
+                                            <a data-toggle="modal" data-target="#myBoxChartModal" style="text-decoration:none;color:#fff;cursor:pointer">Monthly Summary</a>
+                                        </li>
+
+                                        <li class="filterLi" style="line-height: 30px;">
+                                            <a data-toggle="modal" data-target="#myBubbleChartModal" style="text-decoration:none;color:#fff;cursor:pointer">SA by Airlines</a>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDuration">
+                                                <select class="">
+                                                    <option>Hourly</option>
+                                                    <option>Daily</option>
+                                                    <option>Monthly</option>
+                                                    <option>Yearly</option>
+                                                </select>
+                                            </div>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDuration">
+                                                <select class="">
+                                                    <option>Fri 19/06</option>
+                                                    <option>Fri 09/06</option>
+                                                    <option>Fri 29/06</option>
+                                                    <option>Fri 13/06</option>
+                                                </select>
+                                            </div>
+                                        </li>
+
+                                        <li class="filterLi">
+                                            <div class="selectDirection">
+                                                <select class="">
+                                                    <option>All Directions</option>
+                                                    <option>Arrival</option>
+                                                    <option>Departure</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div><!-- heading -->
+                            <div class="panel-body panel-transparent" style="opacity:0.7">
+                                <!-- <div id="morris-donut-chart"></div> -->
+                                <!-- <div id="collapseId" class="collapseClass" style="padding:3px 8px;float:right">
+                                    <img src="img/icons/ico-collapse.png">
+                                </div> -->
+                                <div id="chartContainer" class="chartContainerCls" style="height:100%;padding: 10px 70px"></div>
+                                <div class="panel-footer panel-transparent">
+                                    <div class="" style="float:left">
+                                        <span style="padding:0px 9px"><img src="img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 9px"><img src="img/arrowryt.png" width="" height=""></span>
+                                     </div>
+                                </div><!-- arrow & Select box -->
+                                <div style="height:30px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- row -->
+               <!--  <button type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
+      Click me
+      </button> -->
+        </div>
+        <!-- /#page-content-wrapper -->
+
+        <div style="height:50px;"></div>
+        <div  class="footer" style="">
+            <div id="footerDiv">
+                    <ul>
+                        <li><a href="#"><span style="color:#17DEFF">FRI 19/06/2015</span></a></li>
+                        <li><a href="#"><span>SA = 75% (target 70%)</span></a></li>
+                        <li><a href="#"><span>Slot Utilization = 75%</span></a></li>
+                        <li><a href="#"><span>Pier Service Level = EK 100/137 Contacts;&nbsp;FZ 59/123 Contacts&nbsp;;&nbsp;OAL 116/498 Contacts</span></a></li>
+                        <li><a href="#"><span>Service Rate</span></a></li>
+                        <li><a href="#"><span style="color:#FF0000;font-weight:bold">Honeywell</span></a></li>
+                    </ul>
+            </div>
+        </div>
+
+
+
+        <!-- Box Chart begins here -->
+
+         <!-- Modal -->
+  <div class="modal fade" id="myBoxChartModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="height:480px;width:970px">
+        <div class="modal-header">
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+          <!-- <h4 class="modal-title">Modal Header</h4> -->
+            <div style="float:left;">
+                <span data-dismiss="modal"><a style="cursor: pointer;"><img src="img/icons/ico-close.png"></a></span>
+                <span style="padding:1px 9px">&nbsp;Slot Adherence by Monthly Summary </span>
+            </div>
+            
+            <div class="modalIconsDiv" style="float:right;">
+            <ul>
+            <li><a href="#"><span><img src="img/icons/arrow.png"></span></a></li>
+            <li><a href="#"><span><img src="img/icons/print.png"></span></a></li>
+            <li><a href="#"><span><img src="img/icons/book.png"></span></a></li>
+            <li><a href="#"><span><img src="img/icons/setting.png"></span></a></li>
+            </ul>
+            </div>
+
+
+
+        </div>
+        <div class="modal-body">
+            <div style="height:20px"></div>
+           <div class="wrapper" style="width:915px">
+            <div class="myDiv">
+              <ul>
+                <li><a style="background-color:#fff;color:#000;border:0px">Sun</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">54%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">60%</a></li>
+                <li><a style="background-color:#ff9d00;">40%</a></li>
+                <li><a style="background-color:#ff0000;">20%</a></li>
+                <li><a style="background-color:#ff0000;">20%</a></li>
+              </ul>
+            </div>
+
+            <div class="myDiv">
+              <ul>
+                <li><a style="background-color:#fff;color:#000;border:0px">Mon</a></li>
+                <li><a style="background-color:#ff0000;">19%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">50%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ff9d00;">28%</a></li>
+                <li><a style="background-color:#ff0000;">19%</a></li>
+                <li><a style="background-color:#ff0000;">16%</a></li>
+              </ul>
+            </div>
+
+            <div class="myDiv">
+              <ul>
+                <li><a style="background-color:#fff;color:#000;border:0px">Tue</a></li>
+                <li><a style="background-color:#ff0000;">16%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">20%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ff9d00;">20%</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+              </ul>
+            </div>
+
+            <div class="myDiv">
+              <ul>
+                <li><a style="background-color:#fff;color:#000;border:0px">Wed</a></li>
+                <li><a style="background-color:#ff0000;">16%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">20%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ff9d00;">18%</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+              </ul>
+            </div>
+
+            <div class="myDiv">
+              <ul>
+                <li><a style="background-color:#fff;color:#000;border:0px">Thu</a></li>
+                <li><a style="background-color:#ff0000;">15%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">20%</a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ff9d00;color:#000;border-color:#fff">20%</a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">18%</a></li>
+                <li><a style="background-color:#ff9d00;">18%</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+              </ul>
+            </div>
+
+            <div class="myDiv">
+              <ul>
+                <li><a style="background-color:#fff;color:#000;border:0px">Fri</a></li>
+                <li><a style="background-color:#ff0000;">20%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">58%</a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ff9d00;color:#000;border-color:#fff">60%</a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">60%</a></li>
+                <li><a style="background-color:#ff9d00;">40%</a></li>
+                <li><a style="background-color:#ff9d00;">37%</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+              </ul>
+            </div>
+
+            <div class="myDiv">
+              <ul>
+                <li><a style="background-color:#fff;color:#000;border:0px">Sat</a></li>
+                <li><a style="background-color:#ff0000;">20%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">60%</a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ff9d00;color:#fff;border-color:#fff">40%</a></li>
+                <li><a></a></li>
+                <li><a></a></li>
+                <li><a style="background-color:#ffe500;color:#000;border-color:#fff">60%</a></li>
+                <li><a style="background-color:#ff0000;">10%</a></li>
+                <li><a style="background-color:#ff0000;">18%</a></li>
+                <li><a style="background-color:#ff0000;">20%</a></li>
+                <li><a style="background-color:#ff0000;">20%</a></li>
+              </ul>
+            </div>
+
+            <div class="myDiv" style="">
+              <ul>
+                <li><a style="background-color:#fff;color:#000;border:0px"></a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">00-06</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">06-07</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">08-09</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">09-10</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">10-11</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">12-11</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">11-14</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">14-15</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">16-18</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">18-19</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">19-20</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">21-23</a></li>
+                <li><a style="background-color:#fff;color:#000;border:0px">23-00</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+       <!--  <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+      
+    </div>
+  </div>
+  
+
+
+
+        <!-- Box Chart ends here -->
+
+        <!-- Copy Begins here -->
+        <!-- Modal layout begins -->
+        <!-- Modal -->
+        <div class="modal fade" id="myBubbleChartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                        <div class="modal-header">
+                       <!--      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button> -->
+                                    <div style="float:left">
+                                        <span data-dismiss="modal"><a style="cursor: pointer;"><img src="img/icons/ico-close.png"></a></span>
+                                        <span style="padding:1px 9px"> SA by Airlines </span>
+                                    </div>
+                                    <div class="modalIconsDiv" style="float:right;">
+                                    <ul>
+                                    <li><a href="#"><span><img src="img/icons/arrow.png"></span></a></li>
+                                    <li><a href="#"><span><img src="img/icons/print.png"></span></a></li>
+                                    <li><a href="#"><span><img src="img/icons/book.png"></span></a></li>
+                                    <li><a href="#"><span><img src="img/icons/setting.png"></span></a></li>
+                                    </ul>
+                                    </div>
+                        </div><!-- modal header -->
+
+                        <div class="modal-body text-center">
+                        <div id="bubbleContainer" style="width:750px"></div>
+                            <!-- <img src="img/modal.jpg"> -->
+                        </div><!-- modal body -->
+                    <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    
+                    </div> -->
+                    <!-- modal footer -->
+                </div><!-- modal content IMP -->
+            </div><!-- modal dialog -->
+        </div><!-- Modal wrapper. -->
+        <!-- Modal layout ends -->
+        <!-- Copy ends here. -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- BootStrap & jQuery -->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/barChart.js"></script>
+    
+    <!-- Fusion Charts -->
+    <script src="js/fusion/fusioncharts.charts.js"></script>
+    <script src="js/fusion/fusioncharts.gantt.js"></script>
+    <script src="js/fusion/fusioncharts.js"></script>
+    <script src="js/fusion/fusioncharts.powercharts.js"></script>
+    <script src="js/fusion/fusioncharts.widgets.js"></script>
+    <script src="js/fusion/fusioncharts.theme.fint.js"></script>
+    <script src="js/fusion/lollipopChart.js"></script>
+
+    <!-- SELECT js -->
+    <script type="text/javascript" src="js/select/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="js/select/jquery.selectbox-0.2.js"></script>
+    
+    <script type="text/javascript">
+        /* Collapsible code */
+        var mImg = "img/icons/ico-collapse.png";
+        var pImg = "img/icons/ico-expand.png";
+
+        $(document).ready(function(){
+            $(".collapseClass").click(function(){
+            var currentState = $(this).next(".chartContainerCls").css("display");
+            console.log(currentState);
+            if(currentState == "block"){
+                $(this).next(".chartContainerCls").slideUp("slow");
+                $(this).children("img").attr("src", pImg)
+            }
+            else{
+                $(this).next(".chartContainerCls").slideDown("slow");
+                $(this).children("img").attr("src", mImg)
+            }
+        });
+        });
+
+        // Select js id
+        $(function () {
+            $(".country_id").selectbox();
+        });
+    </script>
+    
+    <script src="js/highCharts/highcharts.js"></script>
+    <script src="js/highCharts/highcharts-more.js"></script>
+    <script src="js/highCharts/exporting.js"></script>
+
+</body>

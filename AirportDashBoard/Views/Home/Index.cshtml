@@ -1,0 +1,638 @@
+﻿<head>
+    <title>Dashboard</title>
+
+    <!-- Common ~/css -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/css/simple-sidebar.css" rel="stylesheet">
+    <link href="~/css/normalize.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    @*<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>*@
+    <link href="~/css/commonDashboard.css" rel="stylesheet">
+
+    <link href="~/css/select/customSelect.css" rel="stylesheet" />
+    <link href="~/css/select/customSelectDate.css" rel="stylesheet" />
+    <link href="~/css/select/customSelectRate.css" rel="stylesheet" />
+
+
+    <style type="text/css">
+        /* ~/css for specific for Dashboard layout */
+
+        .panel-transparent .panel-body {
+            background: rgba(115, 136, 142, 0.7) !important;
+        }
+
+        .navbar-brand {
+            color: #9d9d9d;
+            text-decoration: none;
+            font-style: italic;
+        }
+
+        /* Service Rate panel content ~/css */
+        .img15-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center; /* Align center inline elements */
+            font: 0/0 a;
+        }
+
+            .img15-container:before {
+                content: ' ';
+                display: inline-block;
+                vertical-align: middle;
+                height: 100%;
+            }
+
+            .img15-container img {
+                vertical-align: middle;
+                display: inline-block;
+            }
+
+        .panel {
+            margin-bottom: 13px;
+        }
+
+        .deg:after {
+            content: "\00b0";
+        }
+
+        #input_img {
+            position: absolute;
+            bottom: 7px;
+            left: 10px;
+            width: 20px;
+            height: 20px;
+            margin-left: 11px;
+        }
+
+        #wrapper {
+            padding-left: 200px;
+            transition: all 0.4s ease 0s;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top" style="background-color: none; position: absolute">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" id="menu-toggle">
+                <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+            </button>
+           
+
+
+            <a class="navbar-brand" href="#" style="background-color:#000;font-style:normal;font-size:14px;color:#fff;width:200px;text-align:left">App Version: @ViewBag.version</a>
+        </div>
+        <!-- navbar-header-->
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="color: #fff;">
+            <div class="headerIconsDiv" style="float: right; margin: 10px">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/arrow.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/print.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/book.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/info.png">
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span>
+                                <img src="~/img/icons/resize.png">
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <!-- bs-example-navbar-collapse-1 -->
+    </nav>
+
+
+    <div id="wrapper" class="bgDashboardImgWrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper" style="text-align:left;width:200px">
+            <ul class="sideMenu" style="color:#fff;padding-left:15px;font-size:13px;font-family:'Roboto';font-weight:100;">
+                <li style="height:60px;"></li>
+                <li style="font-size:18px">@System.DateTime.Now.ToString("dd-MM-yyyy")</li>
+                <li style="font-size:20px">@System.DateTime.Now.ToString("hh:mm")</li>
+                <li style="font-size:16px">32<span class="deg"></span>&nbsp;&nbsp;<span><img src="~/img/icons/ico-weather.png"></span></li>
+                <li style="height:20px;"></li>
+
+                <li>&nbsp;&nbsp;&nbsp;SUMMARY</li>
+
+                <li style="height:20px;"></li>
+                <li>70%<span style="margin-left:25px">EMEA (70% target)</span></li>
+                <li>90%<span style="margin-left:25px">APAC</span></li>
+                <li>30%<span style="margin-left:25px">ROW</span></li>
+                <li style="height:20px;"></li>
+                <li>800<span style="margin-left:25px">Total Tickets</span></li>
+                <li>400<span style="margin-left:25px">Closed Tickets</span></li>
+                <li>400<span style="margin-left:25px">Open Tickets</span></li>
+                <li>100<span style="margin-left:25px">SLA Missed </span></li>
+                <li>300<span style="margin-left:25px">With in SLA</span></li>
+                <li><span style="margin-left:25px"></span></li>
+                <li style="height:20px;"></li>
+               @* <li>60Kts<span style="margin-left:18px">N/E Wind</span></li>
+                <li>3hrs<span style="margin-left:25px">Maintenance</span></li>*@
+                <li style="height:50px;"></li>
+
+                <li class="sideIcons"><span><img src="~/img/icons/calendar.png"></span>&nbsp;&nbsp;Calender</li>
+                <li class="sideIcons"><span><img src="~/img/icons/setting.png"></span>&nbsp;&nbsp;Settings</li>
+                <li class="sideIcons">
+                    <input type="text" name="search" size="15" style="padding:0px 5px;border-radius:8px;color:#000;text-indent:22px">
+                    <img src="~/img/icons/search-icon.png" id="input_img" />
+                </li>
+            </ul>
+            <div style="margin-top:735px;padding-left:15px;color:#fff;font-family:'Roboto';font-weight:100;"><span><img src="~/img/icons/7.png" /></span>&nbsp;&nbsp;Process Index</div>
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12" style="height:45px;">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-7 col-md-7" style="padding:0px 2px">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0;">
+                            <div class="panel-heading" style="height:40px">
+                                <div class="panel-title" style="float: left; color: #fff;font-family:'Roboto';font-weight:100;padding-top: 3px;"> Delay</div>
+                                <div class="selectParent" style="float: right;font-family:'Roboto';font-weight:100;padding-top: 3px">
+                                    <select class="" id="LolipopFrequency">
+                                        <option>Hourly</option>
+                                        <option>Daily</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div><!-- heading -->
+                            <div class="panel-body panel-transparent" style="padding:0px 15px">
+                                <!-- <div id="morris-donut-chart"></div> -->
+                                <div id="lollyPopChartContainer" onclick="#" style="height:250px;margin-left:-19px"></div>
+                                <div class="panel-footer panel-transparent" style="height:35px;padding-left:0px">
+                                    <div class="text-left" style="float:left">
+                                        <span style="padding:0px 9px"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding: 0px 29px;opacity: 0.3;"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                    </div>
+                                    <div class="selectParentDate" style="float:right;font-family:'Roboto';font-weight:100;">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select class="" id="datepickerairportdelay">
+                                            <option value="2015-06-17">17/06</option>
+                                            <option value="2015-06-18">18/06</option>
+                                            <option value="2015-06-19">19/06</option>
+                                            <option value="2015-06-20">20/06</option>
+                                            <option value="2015-06-21">21/06</option>
+                                            <option value="2015-06-22" selected="1">22/06</option>
+                                            <option value="2015-06-23">23/06</option>
+                                            <option value="2015-06-24">24/06</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5" style="padding-right:2px">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading" style="height:40px">
+                                <div class="panel-title" style="float: left; color: #fff; font-family: 'Roboto'; font-weight: 100; padding-top: 3px">SLA Adherence</div>
+                                <div class="selectParent" style="float: right; padding-top: 3px; font-family: 'Roboto'; font-weight: 100;">
+                                    <select class="" id="slotadherence">
+                                        <option>Hourly</option>
+                                        <option selected="1">Daily</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body panel-transparent">
+                                <div id="" class="" style="height:250px;color:#fff;padding:19px 29px;" onclick="#">
+                                    <table border="0" width="400">
+                                        <tr>
+                                            <td></td>
+                                            <td style="padding-top:19px">
+                                                <span id="oalID" class="chart" style="" data-percent="76">
+                                                    <span class="percent" style=""></span>
+                                                </span>
+                                            </td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr style="text-align:center"><td>EMEA</td><td></td><td style="text-align:center">APAC</td>
+                                        <tr>
+                                        <tr>
+                                            <td>
+                                                <span id="ekID" class="chartSmall">
+                                                    <span class="percentSmall"></span>
+                                                </span>
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                <span id="towingID" class="chartSmallTow">
+                                                    <span class="percentSmallTow"></span>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="panel-footer panel-transparent" style="height:35px">
+                                    <div class="text-left" style="float:left">
+                                        <span style="padding:0px 9px"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding: 0px 29px;opacity: 0.3;"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                    </div>
+                                    <div class="selectParentDate" style="float: right; font-family: 'Roboto'; font-weight: 100;">
+                                        <select class="" id="datepickerSA">
+                                            <option value="2015-06-17">17/06</option>
+                                            <option value="2015-06-18">18/06</option>
+                                            <option value="2015-06-19" selected="1">19/06</option>
+                                            <option value="2015-06-20">20/06</option>
+                                            <option value="2015-06-21">21/06</option>
+                                            <option value="2015-06-22">22/06</option>
+                                            <option value="2015-06-23">23/06</option>
+                                            <option value="2015-06-24">24/06</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- row -->
+
+
+                <div class="row">
+
+                    <div class="col-lg-4" style="padding-left:2px">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading" style="height:40px">
+                                <div class="panel-title" style="float: left; color: #fff; font-family: 'Roboto'; font-weight: 100; padding-top: 3px;">Resource Utilisation</div>
+                                <div class="" style="float: right; padding-top: 3px; font-family: 'Roboto'; font-weight: 100;">
+                                    <select class="selectParam">
+                                        <option>Daily</option>
+                                        <option>Hourly</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div><!-- heading -->
+                            <div class="panel-body">
+                                <!-- <div id="morris-line-chart"></div> -->
+                                <div style="height:31px"></div>
+                                <div id="Bar2Container" style="height:210px"></div>
+                                <div class="panel-footer panel-transparent" style="height:35px">
+                                    <div class="text-left" style="float:left">
+                                        <span style="padding:0px 9px"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding:0px 29px; opacity: 0.3;"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                    </div>
+                                    <div style="float:left;margin:3px;color:#fff;font-family: 'Roboto'; font-weight: 100;"><span style="padding:0px 15px;margin-right:9px">17/06</span><span>18/06</span></div>
+                                    <div class="" style="float: right; font-family: 'Roboto'; font-weight: 100;">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select class="selectPeriodParam">
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5" style="padding:0px 2px">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading" style="height:40px">
+                                <div class="panel-title" style="float: left; color: #fff; font-family: 'Roboto'; font-weight: 100; padding-top: 3px;"> Service Level</div>
+                                <div class="" style="float: right; padding-top: 3px; font-family: 'Roboto'; font-weight: 100;">
+                                    <select class="selectParam">
+                                        <option>Daily</option>
+                                        <option>Hourly</option>
+                                        <option>Monthly</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <!-- <div id="morris-bar-chart"></div> -->
+                                <div style="height:17px"></div>
+                                <div style="height:225px;color:#fff;" class="center">
+                                    <div style="padding: 6px; margin-left: -11px; font-size: 12px; font-family: 'Roboto'; font-weight: 100;">
+                                        <span style="font-size:11px">Movements:&nbsp;&nbsp;137</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="~/img/slotBubble_1.png" style="width: 300px; height: 53px;">
+                                    </div>
+                                    <div style="padding: 6px; margin-left: -11px; font-size: 12px; font-family: 'Roboto'; font-weight: 100;">
+                                        <span style="font-size:11px">Movements:&nbsp;&nbsp;123</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="~/img/slotBubble_2.png" style="width: 300px; height: 53px;">
+                                    </div>
+                                    <div style="padding: 6px; margin-left: -11px; font-size: 12px; font-family: 'Roboto'; font-weight: 100;">
+                                        <span style="font-size:11px">Movements:&nbsp;&nbsp;498</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="~/img/slotBubble_3.png" style="width: 300px; height: 53px;">
+                                    </div>
+                                </div>
+                                <div class="panel-footer panel-transparent" style="height:35px">
+                                    <div class="text-left" style="float:left">
+                                        <span style="padding:0px 9px"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding: 0px 29px;opacity: 0.3;"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                    </div>
+                                    <div class="selectParentDate" style="float: right; font-family: 'Roboto'; font-weight: 100;">
+                                        <select class="">
+                                            <option>19/06</option>
+                                            <option>12/07</option>
+                                            <option>11/04</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3" style="padding-right:2px">
+                        <div class="panel panel-default panel-transparent" style="border-radius:0px;">
+                            <div class="panel-heading" style="height:40px">
+                                <div class="panel-title" style="float: left; color: #fff; font-family: 'Roboto'; font-weight: 100; padding-top: 3px">Service Rate</div>
+                                <div class="" style="float: right; padding-top: 3px; font-family: 'Roboto'; font-weight: 100;">
+                                    <select class="selectParam">
+                                        <option>Monthly</option>
+                                        <option>Hourly</option>
+                                        <option>Daily</option>
+                                        <option>Yearly</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="panel-body panel-transparent">
+                                <!-- <div id="morris-line-chart"></div> -->
+                                <div style="height:17px"></div>
+                                <div id="" style="height:225px;position: relative;width: auto;border: 0px solid black;">
+                                    <div style="padding-top: auto;"></div>
+                                    <div class="img15-container">
+                                        <img src="~/img/15-roboto.png" width="120px" height="100px">
+                                    </div>
+                                </div>
+                                <div class="panel-footer panel-transparent" style="height:35px">
+                                    <div class="text-left" style="float:left">
+                                        <span style="padding:0px 9px"><img src="~/img/arrowleft.png" width="" height=""></span>
+                                        <span style="padding: 0px 29px; opacity: 0.3;"><img src="~/img/arrowryt.png" width="" height=""></span>
+                                    </div>
+                                    <div class="" style="float: right; font-family: 'Roboto'; font-weight: 100;">
+                                        <!-- <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a> -->
+                                        <select class="selectParamRate">
+                                            <option>JUNE 2015</option>
+                                            <option>APR 2015</option>
+                                            <option>FEB 2015</option>
+                                        </select>
+                                    </div>
+                                </div><!-- arrow & Select box -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        <div class="footer" style="font-family:'Roboto';font-weight: 100;">
+            <span style="float: right; padding: 0px 4px;color:#FF0000;font-weight:bold;">Honeywell</span>
+            <div id="footerDiv" style="width: 93%; font-family: 'Roboto'; font-weight: 100;margin-top:-9px">
+                <marquee>
+                    <ul style="font-family: 'Roboto'; font-weight: 100;">
+                        <li><a href="#"><span style="color:#17DEFF">FRI 19/06/2015</span></a></li>
+                        <li><a href="#"><span>OTP&nbsp;&nbsp;=&nbsp;&nbsp;75% (target 70%)</span></a></li>
+                        <li><a href="#"><span>Closed stands&nbsp;&nbsp;=&nbsp;&nbsp;31</span></a></li>
+                        <li><a href="#"><span>Single RWY Operations</span></a></li>
+                        <!--<li><a href="#"><span style="color:#FF0000;font-weight:bold">Honeywell</span></a></li>-->
+                    </ul>
+                </marquee>
+            </div>
+        </div>
+
+    </div>
+    <!-- /#wrapper -->
+</body>
+<!-- jQuery -->
+<script src="~/js/jquery-1.11.2.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/sidebar_menu.js"></script>
+<script src="~/js/BarChart.js"></script>
+<!-- Fusion Charts -->
+<script src="~/js/fusion/fusioncharts.charts.js"></script>
+<script src="~/js/fusion/fusioncharts.gantt.js"></script>
+<script src="~/js/fusion/fusioncharts.js"></script>
+<script src="~/js/fusion/fusioncharts.powercharts.js"></script>
+<script src="~/js/fusion/fusioncharts.widgets.js"></script>
+<script src="~/js/fusion/fusioncharts.theme.fint.js"></script>
+
+<script src="~/Scripts/Main.js"></script>
+<!-- Pie Charts -->
+<script type="text/javascript" src="~/js/pieChart/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="~/js/pieChart/jquery.easing.min.js"></script>
+<script type="text/javascript" src="~/js/pieChart/jquery.easypiechart.min.js"></script>
+
+<script type="text/javascript" src="~/js/select/customSelect.js"></script>
+<script type="text/javascript" src="~/js/select/customSelectDate.js"></script>
+<script type="text/javascript" src="~/js/select/customSelectRate.js"></script>
+
+
+<script src="~/js/highCharts/highcharts.js"></script>
+<script src="~/js/highCharts/exporting.js"></script>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#datepickerairportdelay").change(function () {
+            LoadLolipopChart();
+        });
+
+        $("#datepickerSA").change(function () {
+            ChangeSAValues();
+
+        });
+        LoadLolipopChart();
+        GetKPI2L1();
+        $("#LolipopFrequency").change(function () {
+            //alert('hello');
+            LoadLolipopChart();
+        });
+        $("#slotadherence").change(function () {
+            GetKPI2L1();
+        });
+
+
+    });
+
+    function onclickpop() {
+        
+		if (trafficHandled_Frequency == "") 
+		trafficHandled_Frequency = 'Hourly'; 
+		//window.location = "/Home/KPI" 
+		window.location = "/Home/KPI?frequency=" + trafficHandled_Frequency;
+		
+    }
+
+    var trafficHandled_Frequency = 'Hourly';
+    //Create KPI2 L1
+    function LoadKPI2() {
+
+
+        //var $chart = $(".easy-pie-chart");
+        //$chart.data('easy-pie-chart', null);
+
+        $('.chart').easyPieChart({
+            easing: 'easeOutBounce',
+            onStep: function (from, to, percent) {
+                //alert(percent);
+                $(this.el).find('.percent').text(Math.round(percent));
+            },
+            size: 110,
+            // animate: 2000,
+            lineCap: 'butt',
+            scaleColor: false,
+            barColor: '#17DEFF',
+            trackColor: "rgba(255, 255, 255, 0.4)",
+            lineWidth: 2
+        });
+
+        $('.chartSmall').easyPieChart({
+            easing: 'easeOutBounce',
+            onStep: function (from, to, percent) {
+                //alert(percent);
+                $(this.el).find('.percentSmall').text(Math.round(percent));
+            },
+            size: 80,
+            // animate: 2000,
+            lineCap: 'butt',
+            scaleColor: false,
+            barColor: '#17DEFF',
+            trackColor: "rgba(255, 255, 255, 0.7)",
+            lineWidth: 2
+        });
+        $('.chartSmallTow').easyPieChart({
+            easing: 'easeOutBounce',
+            onStep: function (from, to, percent) {
+                //alert(percent);
+                $(this.el).find('.percentSmallTow').text(Math.round(percent));
+            },
+            size: 80,
+            // animate: 2000,
+            lineCap: 'butt',
+            scaleColor: false,
+            barColor: '#17DEFF',
+            trackColor: "rgba(255, 255, 255, 0.7)",
+            lineWidth: 2
+        });
+        //$('.chart').data('easyPieChart').update(90);
+    }
+
+    //$(function () {
+    //    $('.chartSmall').easyPieChart({
+    //        easing: 'easeOutBounce',
+    //        onStep: function (from, to, percent) {
+    //            alert(percent);
+    //            $(this.el).find('.percentSmall').text(Math.round(percent));
+    //        },
+    //        size: 80,
+    //        // animate: 2000,
+    //        lineCap: 'butt',
+    //        scaleColor: false,
+    //        barColor: '#17DEFF',
+    //        trackColor: "rgba(255, 255, 255, 0.7)",
+    //        lineWidth: 2
+    //    });
+    //    // var chart = window.chart = $('.chart').data('easyPieChart');
+    //    // $('.js_update').on('click', function() {
+    //    //  chart.update(Math.random()*200-100);
+    //    // });
+    //});
+
+
+
+    //Create KPI1 L1
+    function LoadLolipopChart() {
+        trafficHandled_Frequency = $('#LolipopFrequency').find(":selected").text();
+        timeperiod = $('#datepickerairportdelay').val();
+        //alert(timeperiod);
+        $.ajax({
+            // url: "../Home/GetTrafficHandledJson",
+            url: '@Url.Action("GetTrafficHandledJson", "Home")',
+            data: "Frequency=" + trafficHandled_Frequency + " &fromdate=" + timeperiod,
+            //data: JSON.stringify({ 'Frequency': trafficHandled_Frequency, 'fromdate': timeperiod }),
+            success: function (result) {
+                var jsonObject = eval(result);
+                GetLollyPopChart(jsonObject);
+            }
+        });
+    }
+    //Create and call KPI2 L1
+    function GetKPI2L1() {
+        trafficHandled_Frequency1 = $('#slotadherence').find(":selected").text();
+        timeperiod = $('#datepickerSA').val();
+        //alert(timeperiod);
+        $.ajax({
+            // url: "/Home/GetKPI2SA_L1",
+            url: '@Url.Action("GetKPI2SA_L1", "Home")',
+            data: "Frequency=" + trafficHandled_Frequency1 + " &fromdate=" + timeperiod,
+            // data: "Frequency=" + trafficHandled_Frequency,
+            success: function (result) {
+                var jsonObject = eval(result);
+                //alert('start');
+                //alert(jsonObject[0]['SA_PERCENT']);
+                //alert(jsonObject[1]['SA_PERCENT']);
+                //alert(jsonObject[2]['SA_PERCENT']);
+                $("#ekID").attr("data-percent", jsonObject[0]['SA_PERCENT']);
+                $('#oalID').attr("data-percent", jsonObject[1]['SA_PERCENT']);
+                $('#towingID').attr("data-percent", jsonObject[2]['SA_PERCENT']);
+                LoadKPI2(jsonObject);
+                //LoadKPI2();
+            }
+        });
+    }
+
+    function ChangeSAValues() {
+        trafficHandled_Frequency1 = $('#slotadherence').find(":selected").text();
+        timeperiod = $('#datepickerSA').val();
+        //alert(timeperiod);
+        $.ajax({
+            url: '@Url.Action("GetKPI2SA_L1", "Home")',
+            data: "Frequency=" + trafficHandled_Frequency1 + " &fromdate=" + timeperiod,
+            // data: "Frequency=" + trafficHandled_Frequency,
+            success: function (result) {
+                var jsonObject = eval(result);
+                var chart = window.chart = $('.chart').data('easyPieChart');
+                chart.update(jsonObject[1]['SA_PERCENT']);
+                var chart = window.chart = $('.chartSmall').data('easyPieChart');
+                //    // $('.js_update').on('click', function() {
+                chart.update(jsonObject[0]['SA_PERCENT']);
+                var chart = window.chart = $('.chartSmallTow').data('easyPieChart');
+                //    // $('.js_update').on('click', function() {
+                chart.update(jsonObject[2]['SA_PERCENT']);
+            }
+        });
+    }
+
+
+</script>
+
